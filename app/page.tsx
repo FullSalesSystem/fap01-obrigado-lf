@@ -4,6 +4,8 @@ import { useState, useEffect, useRef, Suspense, ReactNode } from 'react'
 import Image from 'next/image'
 
 // ─── CONFIGURAR ESTES VALORES ──────────────────────────────────────────────────
+const CHECKOUT_ANUAL_URL  = 'https://COLOQUE_URL_DO_CHECKOUT_ANUAL_AQUI'
+const CHECKOUT_MENSAL_URL = 'https://COLOQUE_URL_DO_CHECKOUT_MENSAL_AQUI'
 const YOUTUBE_PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLzJ4B1s6bJZ2DL9jhvEgx2ANhwi6LiQk_'
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -49,12 +51,14 @@ function IconCheck() {
 }
 
 /* ─────────────────────────────────────────────
-   NAVBAR
+   NAVBAR — começa sobre fundo escuro
 ───────────────────────────────────────────── */
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  // hero section height ≈ 100vh; após passar disso o fundo fica claro
+  const DARK_HERO_PX = 560
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20)
+    const fn = () => setScrolled(window.scrollY > DARK_HERO_PX)
     window.addEventListener('scroll', fn)
     return () => window.removeEventListener('scroll', fn)
   }, [])
@@ -62,67 +66,148 @@ function Navbar() {
   return (
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-      borderBottom: scrolled ? '1px solid rgba(0,0,0,0.08)' : '1px solid transparent',
-      backgroundColor: scrolled ? 'rgba(255,255,255,0.97)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(14px)' : 'none',
-      transition: 'all 0.3s',
+      borderBottom: scrolled ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.08)',
+      backgroundColor: scrolled ? 'rgba(255,255,255,0.97)' : 'rgba(10,10,10,0.6)',
+      backdropFilter: 'blur(14px)',
+      transition: 'all 0.35s',
     }}>
       <div className="section-container" style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <img src="/logo-fss.png" alt="Full Sales System" style={{ height: 36, width: 'auto', display: 'block' }} />
-        </div>
+        <img src="/logo-fss.png" alt="Full Sales System" style={{ height: 36, width: 'auto', display: 'block', filter: scrolled ? 'none' : 'brightness(0) invert(1)' }} />
+        <a
+          href={CHECKOUT_ANUAL_URL}
+          className="btn-primary"
+          style={{ fontSize: 13, padding: '9px 20px' }}
+        >
+          Garantir Acesso <IconArrow />
+        </a>
       </div>
     </nav>
   )
 }
 
 /* ─────────────────────────────────────────────
-   FLIX CTA SECTION
+   ACADEMY HERO — dark, com pricing
 ───────────────────────────────────────────── */
-function FlixCTASection() {
+function AcademyHeroSection() {
   return (
-    <section className="section-pad" style={{ background: '#F8F9FA', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-      <div className="section-container" style={{ maxWidth: 800, textAlign: 'center' }}>
+    <section style={{ paddingTop: 96, paddingBottom: 96, background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
+      {/* background glows */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(ellipse at 20% 40%, rgba(224,21,21,0.14) 0%, transparent 55%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, right: 0, width: '60%', height: '100%', background: 'radial-gradient(ellipse at 80% 50%, rgba(30,82,232,0.1) 0%, transparent 55%)', pointerEvents: 'none' }} />
+
+      <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center' }}>
         <FadeUp>
-          <h2 style={{ fontSize: 'clamp(26px, 4vw, 46px)', fontWeight: 800, letterSpacing: '-0.03em', color: '#0A0A0A', lineHeight: 1.1, marginBottom: 18 }}>
-            Acesse gratuitamente todo o conteúdo da{' '}
-            <span style={{ color: '#E01515' }}>Full Sales System</span>
-          </h2>
-          <p style={{ fontSize: 'clamp(15px, 2vw, 18px)', color: '#525252', lineHeight: 1.65, maxWidth: 580, margin: '0 auto 36px' }}>
-            O Full Sales Flix é a plataforma de conteúdo gratuito da FSS. Aulas, frameworks e playbooks práticos para estruturar seu comercial, disponíveis para você agora.
+          {/* eyebrow */}
+          <div style={{ marginBottom: 20, fontSize: 'clamp(11px, 1.4vw, 13px)', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>
+            AULAS&nbsp;&nbsp;•&nbsp;&nbsp;FRAMEWORKS&nbsp;&nbsp;•&nbsp;&nbsp;PLAYBOOKS
+          </div>
+
+          {/* tag */}
+          <div className="tag" style={{ marginBottom: 24, background: 'rgba(224,21,21,0.12)', borderColor: 'rgba(224,21,21,0.28)', color: '#FF5555' }}>
+            <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#E01515', display: 'inline-block' }} />
+            Cadastro confirmado — próximo passo
+          </div>
+
+          <h1 style={{
+            fontSize: 'clamp(28px, 5vw, 58px)',
+            fontWeight: 900,
+            lineHeight: 1.08,
+            letterSpacing: '-0.035em',
+            color: '#FFFFFF',
+            marginBottom: 20,
+          }}>
+            Acesse o{' '}
+            <span style={{ background: 'linear-gradient(90deg, #E01515 0%, #1E52E8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Full Sales Academy
+            </span>
+          </h1>
+
+          <p style={{
+            fontSize: 'clamp(15px, 2vw, 19px)',
+            color: 'rgba(255,255,255,0.6)',
+            lineHeight: 1.65,
+            maxWidth: 620,
+            margin: '0 auto 52px',
+          }}>
+            O conteúdo que já estruturou o comercial de mais de{' '}
+            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>{' '}
+            em uma plataforma completa — aprenda a construir um sistema comercial com previsibilidade, escala e liberdade.
           </p>
 
-          {/* Features */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 40, textAlign: 'left', maxWidth: 640, margin: '0 auto 40px' }}>
-            {[
-              'Aulas de estruturação comercial',
-              'Estudos de caso',
-              'Processos de vendas e entrega',
-              'Playbook interno de Estruturação Comercial',
-              'Guia prático de Social Selling',
-              'Acesso imediato e gratuito',
-            ].map((item, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <IconCheck />
-                <span style={{ fontSize: 14, color: '#374151', fontWeight: 500 }}>{item}</span>
+          {/* Pricing cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, maxWidth: 560, margin: '0 auto 40px' }}>
+
+            {/* Anual */}
+            <div style={{
+              background: 'linear-gradient(145deg, rgba(224,21,21,0.18) 0%, rgba(30,82,232,0.12) 100%)',
+              border: '1px solid rgba(224,21,21,0.45)',
+              borderRadius: 18,
+              padding: '32px 24px 24px',
+              position: 'relative',
+            }}>
+              <div style={{
+                position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)',
+                background: '#E01515', color: '#fff', fontSize: 11, fontWeight: 800,
+                padding: '4px 16px', borderRadius: 100, letterSpacing: '0.06em',
+                whiteSpace: 'nowrap', textTransform: 'uppercase',
+              }}>
+                Melhor valor
+              </div>
+              <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Acesso Anual</div>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, justifyContent: 'center', marginBottom: 4 }}>
+                <span style={{ fontSize: 16, fontWeight: 700, color: '#fff', alignSelf: 'flex-start', marginTop: 8 }}>R$</span>
+                <span style={{ fontSize: 'clamp(42px, 7vw, 54px)', fontWeight: 900, color: '#fff', lineHeight: 1 }}>597</span>
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 24 }}>à vista · equivale a R$49,75/mês</div>
+              <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ width: '100%', fontSize: 14, padding: '13px 16px', display: 'flex', justifyContent: 'center', boxSizing: 'border-box' as const }}>
+                Garantir Acesso Anual <IconArrow />
+              </a>
+            </div>
+
+            {/* Parcelado */}
+            <div style={{
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: 18,
+              padding: '32px 24px 24px',
+            }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Acesso Parcelado</div>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, justifyContent: 'center', marginBottom: 4 }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: 10 }}>12× de</span>
+                <span style={{ fontSize: 'clamp(32px, 5vw, 42px)', fontWeight: 900, color: '#E01515', lineHeight: 1, marginLeft: 6 }}>R$97</span>
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 24 }}>no cartão de crédito</div>
+              <a
+                href={CHECKOUT_MENSAL_URL}
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  width: '100%', fontSize: 14, padding: '13px 16px', borderRadius: 8,
+                  border: '1px solid rgba(255,255,255,0.18)', color: '#fff', fontWeight: 700,
+                  textDecoration: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' as const,
+                }}
+              >
+                Parcelar em 12× <IconArrow />
+              </a>
+            </div>
+          </div>
+
+          {/* micro trust */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
+            {['Acesso imediato', 'Cancele quando quiser', '+600 empresas estruturadas'].map((t, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 7, color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <span>{t}</span>
               </div>
             ))}
           </div>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
-            <a href={YOUTUBE_PLAYLIST_URL} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, backgroundColor: '#E01515', color: '#ffffff', fontWeight: 800, fontSize: 16, padding: '15px 32px', borderRadius: 8, maxWidth: 420, textDecoration: 'none', boxSizing: 'border-box' as const }}>
-              <IconYouTube /> Playlist no YouTube
-            </a>
-          </div>
-
-          <p style={{ fontSize: 13, color: '#9CA3AF', marginTop: 14 }}>
-            Gratuito · Sem cartão de crédito · Acesso imediato
-          </p>
         </FadeUp>
       </div>
+
+      <style>{`@media(max-width:540px){#academy-grid{grid-template-columns:1fr!important}}`}</style>
     </section>
   )
 }
+
 
 /* ─────────────────────────────────────────────
    QUEM CONFIA NA FSS
@@ -418,8 +503,10 @@ function Footer() {
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 48 }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: '#71717A', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 14 }}>Conteúdo</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: '#71717A', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 14 }}>Academy</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <a href={CHECKOUT_ANUAL_URL} style={{ fontSize: 14, color: '#A1A1AA', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#fff')} onMouseLeave={e => (e.currentTarget.style.color = '#A1A1AA')}>Garantir Acesso Anual — R$597</a>
+                <a href={CHECKOUT_MENSAL_URL} style={{ fontSize: 14, color: '#A1A1AA', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#fff')} onMouseLeave={e => (e.currentTarget.style.color = '#A1A1AA')}>Parcelar em 12× de R$97</a>
                 <a href={YOUTUBE_PLAYLIST_URL} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, color: '#A1A1AA', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#fff')} onMouseLeave={e => (e.currentTarget.style.color = '#A1A1AA')}>YouTube — Comercial Faixa Preta</a>
               </div>
             </div>
@@ -434,11 +521,11 @@ function Footer() {
           display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 20, marginBottom: 36,
         }}>
           <div>
-            <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 4 }}>Acesse o conteúdo gratuito agora</p>
-            <p style={{ fontSize: 13, color: '#A1A1AA' }}>Playlist completa com aulas de estruturação comercial.</p>
+            <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 4 }}>Garanta seu acesso ao Full Sales Academy</p>
+            <p style={{ fontSize: 13, color: '#A1A1AA' }}>R$597/ano à vista ou 12× de R$97 no cartão.</p>
           </div>
-          <a href={YOUTUBE_PLAYLIST_URL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, backgroundColor: 'rgba(255,255,255,0.1)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.3)', fontWeight: 700, fontSize: 14, padding: '14px 24px', borderRadius: 8, textDecoration: 'none' }}>
-            <IconYouTube /> Playlist no YouTube
+          <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ fontSize: 14, padding: '14px 24px' }}>
+            Garantir Acesso <IconArrow />
           </a>
         </div>
 
@@ -464,8 +551,7 @@ function HomeContent() {
   return (
     <main style={{ backgroundColor: '#FFFFFF', color: '#0A0A0A', overflowX: 'hidden' }}>
       <Navbar />
-      {/* PRIMEIRA SEÇÃO — a ser definida */}
-      <FlixCTASection />
+      <AcademyHeroSection />
       <TrustSection />
       <AboutSection />
       <PressSection />
