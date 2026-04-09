@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, Suspense, ReactNode } from 'react'
 import Image from 'next/image'
 
 // ─── CONFIGURAR ESTES VALORES ──────────────────────────────────────────────────
-const CHECKOUT_ANUAL_URL  = 'https://COLOQUE_URL_DO_CHECKOUT_ANUAL_AQUI'
+const CHECKOUT_ANUAL_URL  = 'https://clkdmg.site/subscribe/oto-anual-fssflix'
 const CHECKOUT_MENSAL_URL = 'https://COLOQUE_URL_DO_CHECKOUT_MENSAL_AQUI'
 const YOUTUBE_PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLzJ4B1s6bJZ2DL9jhvEgx2ANhwi6LiQk_'
 // ──────────────────────────────────────────────────────────────────────────────
@@ -102,12 +102,6 @@ function AcademyHeroSection() {
             AULAS&nbsp;&nbsp;•&nbsp;&nbsp;FRAMEWORKS&nbsp;&nbsp;•&nbsp;&nbsp;PLAYBOOKS
           </div>
 
-          {/* tag */}
-          <div className="tag" style={{ marginBottom: 24, background: 'rgba(224,21,21,0.12)', borderColor: 'rgba(224,21,21,0.28)', color: '#FF5555' }}>
-            <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#E01515', display: 'inline-block' }} />
-            Cadastro confirmado — próximo passo
-          </div>
-
           <h1 style={{
             fontSize: 'clamp(28px, 5vw, 58px)',
             fontWeight: 900,
@@ -193,7 +187,7 @@ function AcademyHeroSection() {
 
           {/* micro trust */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
-            {['Acesso imediato', 'Cancele quando quiser', '+600 empresas estruturadas'].map((t, i) => (
+            {['Acesso imediato', '+600 empresas estruturadas'].map((t, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 7, color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 <span>{t}</span>
