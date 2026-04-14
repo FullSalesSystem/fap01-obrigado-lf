@@ -104,7 +104,7 @@ function AcademyHeroSection() {
           <div style={{ marginBottom: 20 }}>
             <p style={{
               fontSize: 'clamp(13px, 1.4vw, 17px)',
-              fontWeight: 400,
+              fontWeight: 700,
               color: 'rgba(255,255,255,0.7)',
               letterSpacing: '0',
               lineHeight: 1.5,
