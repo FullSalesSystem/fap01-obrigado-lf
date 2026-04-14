@@ -129,9 +129,9 @@ function AcademyHeroSection() {
             maxWidth: 640,
             margin: '0 auto 52px',
           }}>
-            Uma plataforma completa com todo o conteúdo que já estruturou o comercial de mais de{' '}
+            Uma plataforma completa com todo o conteúdo que já estruturou o processo comercial de mais de{' '}
             <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>
-            {' '}— aprenda a construir um sistema comercial com previsibilidade, escala e liberdade.
+            {' '}— tenha previsibilidade, escala e liberdade no seu negócio.
           </p>
 
           {/* Pricing cards */}
@@ -470,7 +470,25 @@ function PressSection() {
                 <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.65, marginBottom: 20, fontStyle: 'italic', flexGrow: 1 }}>
                   {item.quote}
                 </p>
-                <p style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A' }}>{item.outlet}</p>
+                {/* Logo do veículo */}
+                <div style={{
+                  background: item.logoBg,
+                  borderRadius: 8,
+                  padding: '10px 14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: 52,
+                  border: '1px solid rgba(0,0,0,0.07)',
+                }}>
+                  <Image
+                    src={item.logo}
+                    alt={item.outlet}
+                    width={140}
+                    height={36}
+                    style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                  />
+                </div>
               </div>
             </FadeUp>
           ))}
