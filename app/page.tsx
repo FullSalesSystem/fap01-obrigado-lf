@@ -102,7 +102,7 @@ function AcademyHeroSection() {
           </div>
 
           <h1 style={{
-            fontSize: 'clamp(26px, 4.5vw, 54px)',
+            fontSize: 'clamp(18px, 2.6vw, 36px)',
             fontWeight: 900,
             lineHeight: 1.12,
             letterSpacing: '-0.03em',
