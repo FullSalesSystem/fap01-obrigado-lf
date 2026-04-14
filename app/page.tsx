@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 // ─── CONFIGURAR ESTES VALORES ──────────────────────────────────────────────────
 const CHECKOUT_ANUAL_URL  = 'https://clkdmg.site/subscribe/oto-anual-fssflix'
-const CHECKOUT_MENSAL_URL = 'https://COLOQUE_URL_DO_CHECKOUT_MENSAL_AQUI'
+const CHECKOUT_MENSAL_URL = 'https://clkdmg.site/subscribe/oto-mensal-fssflix'
 const YOUTUBE_PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLzJ4B1s6bJZ2DL9jhvEgx2ANhwi6LiQk_'
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -90,10 +90,9 @@ function Navbar() {
 ───────────────────────────────────────────── */
 function AcademyHeroSection() {
   return (
-    <section style={{ paddingTop: 96, paddingBottom: 96, background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
-      {/* background glows */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(ellipse at 20% 40%, rgba(224,21,21,0.14) 0%, transparent 55%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: 0, right: 0, width: '60%', height: '100%', background: 'radial-gradient(ellipse at 80% 50%, rgba(30,82,232,0.1) 0%, transparent 55%)', pointerEvents: 'none' }} />
+    <section style={{ paddingTop: 96, paddingBottom: 96, position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      {/* overlay escuro sobre o background */}
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.72)', pointerEvents: 'none' }} />
 
       <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center' }}>
         <FadeUp>
@@ -111,7 +110,7 @@ function AcademyHeroSection() {
             marginBottom: 20,
           }}>
             Acesse o{' '}
-            <span style={{ background: 'linear-gradient(90deg, #E01515 0%, #1E52E8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            <span style={{ color: '#FFFFFF' }}>
               Full Sales Academy
             </span>
           </h1>
@@ -314,15 +313,17 @@ function TrustSection() {
 ───────────────────────────────────────────── */
 function AboutSection() {
   return (
-    <section className="section-pad" style={{ background: '#F8F9FA', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-      <div className="section-container">
+    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      {/* overlay */}
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.80)', pointerEvents: 'none' }} />
+      <div className="section-container" style={{ position: 'relative' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 56, alignItems: 'center' }}>
           {/* Photo */}
           <FadeUp>
             <div style={{
               width: '100%', maxWidth: 420, aspectRatio: '4/5',
               borderRadius: 16, position: 'relative', overflow: 'hidden',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
+              boxShadow: '0 4px 32px rgba(0,0,0,0.4)',
             }}>
               <Image
                 src="/socios.png"
@@ -330,21 +331,21 @@ function AboutSection() {
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center top' }}
               />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%)', pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', bottom: 24, right: 24, background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 10, padding: '10px 14px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>
-                <div style={{ fontSize: 18, fontWeight: 800, color: '#16A34A' }}>R$30M</div>
-                <div style={{ fontSize: 11, color: '#9CA3AF', marginTop: 2 }}>no 2º ano</div>
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', bottom: 24, right: 24, background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 10, padding: '10px 14px' }}>
+                <div style={{ fontSize: 18, fontWeight: 800, color: '#4ADE80' }}>R$30M</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>no 2º ano</div>
               </div>
             </div>
           </FadeUp>
 
           {/* Bio */}
           <FadeUp delay={120}>
-            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.14, marginBottom: 16 }}>
+            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.14, marginBottom: 16 }}>
               A Full Sales System é uma empresa de{' '}
               <span style={{ color: '#E01515' }}>estruturação comercial</span>, não de cursos
             </h2>
-            <p style={{ fontSize: 15, color: '#525252', lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 24 }}>
               Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System é uma consultoria especializada em equipes comerciais que ajuda empresas a otimizarem o ROI de seus funis de vendas. Com mais de 8 anos de experiência, a FSS acumula mais de 550 empresas aceleradas, mais de R$110 milhões em vendas próprias e mais de R$1 bilhão em faturamento gerado para seus clientes.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
@@ -356,7 +357,7 @@ function AboutSection() {
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                   <IconCheck />
-                  <p style={{ fontSize: 14, color: '#525252', lineHeight: 1.55 }}>{item}</p>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55 }}>{item}</p>
                 </div>
               ))}
             </div>
@@ -366,9 +367,9 @@ function AboutSection() {
                 { label: '+550 empresas', desc: 'estruturadas' },
                 { label: 'Brasil · Portugal · EUA', desc: 'atuação global' },
               ].map(t => (
-                <div key={t.label} style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 8, padding: '7px 14px', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A' }}>{t.label}</div>
-                  <div style={{ fontSize: 11, color: '#9CA3AF', marginTop: 1 }}>{t.desc}</div>
+                <div key={t.label} style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, padding: '7px 14px' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF' }}>{t.label}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 1 }}>{t.desc}</div>
                 </div>
               ))}
             </div>
