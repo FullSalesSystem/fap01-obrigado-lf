@@ -96,10 +96,6 @@ function AcademyHeroSection() {
 
       <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center' }}>
         <FadeUp>
-          {/* eyebrow */}
-          <div style={{ marginBottom: 20, fontSize: 'clamp(11px, 1.4vw, 13px)', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>
-            AULAS&nbsp;&nbsp;•&nbsp;&nbsp;FRAMEWORKS&nbsp;&nbsp;•&nbsp;&nbsp;PLAYBOOKS
-          </div>
 
           <div style={{ marginBottom: 20 }}>
             <p style={{
