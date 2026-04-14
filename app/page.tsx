@@ -101,20 +101,30 @@ function AcademyHeroSection() {
             AULAS&nbsp;&nbsp;•&nbsp;&nbsp;FRAMEWORKS&nbsp;&nbsp;•&nbsp;&nbsp;PLAYBOOKS
           </div>
 
-          <h1 style={{
-            fontSize: 'clamp(18px, 2.6vw, 36px)',
-            fontWeight: 900,
-            lineHeight: 1.12,
-            letterSpacing: '-0.03em',
-            color: '#FFFFFF',
-            marginBottom: 20,
-          }}>
-            Se sua empresa ainda não alcança R$50 mil mensais...{' '}
-            <br />
-            o{' '}
-            <span style={{ color: '#E01515' }}>Full Sales Academy</span>
-            {' '}é o upgrade que você precisa para potencializar seus resultados e alcançar o próximo nível.
-          </h1>
+          <div style={{ marginBottom: 20 }}>
+            <p style={{
+              fontSize: 'clamp(13px, 1.4vw, 17px)',
+              fontWeight: 400,
+              color: 'rgba(255,255,255,0.7)',
+              letterSpacing: '0',
+              lineHeight: 1.5,
+              marginBottom: 10,
+            }}>
+              Se sua empresa ainda não alcança R$50 mil mensais...
+            </p>
+            <h1 style={{
+              fontSize: 'clamp(20px, 2.8vw, 38px)',
+              fontWeight: 800,
+              lineHeight: 1.15,
+              letterSpacing: '-0.025em',
+              color: '#FFFFFF',
+              margin: 0,
+            }}>
+              o{' '}
+              <span style={{ color: '#E01515' }}>Full Sales Academy</span>
+              {' '}é o upgrade que você precisa para potencializar seus resultados
+            </h1>
+          </div>
 
           <p style={{
             fontSize: 'clamp(15px, 2vw, 18px)',
