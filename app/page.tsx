@@ -396,22 +396,19 @@ const pressItems = [
     outlet: 'Estadão',
     title: 'Full Sales System: três mentes empreendedoras que transformaram desafios em estratégias',
     quote: 'Nos últimos anos, ajudamos os nossos clientes a girar mais de 500 milhões de faturamento em vendas. Mas quando olhamos para esses números enxergamos algo ainda maior: não foi só o aumento nas vendas, mas eles se tornaram protagonistas da própria empresa.',
-    logo: '/estadao-novo.png',
-    logoBg: '#FFFFFF',
+    image: '/estadao.webp',
   },
   {
     outlet: 'Valor Econômico',
     title: 'Full Sales System aponta o caminho para crescer em 2026 com estratégias mais inteligentes',
     quote: 'Empresas que adotam estruturas de vendas inteligentes e estratégias orgânicas robustas tendem a prosperar em cenários de incerteza, criando vantagem competitiva mesmo com menor investimento direto em mídia.',
-    logo: '/press-valor-economico.png',
-    logoBg: '#FFFFFF',
+    image: '/valor-economico.webp',
   },
   {
     outlet: 'Pequenas Empresas & Grandes Negócios',
     title: 'Yuri Barbosa, Vinícius de Sá e Matheus Garcia trilharam caminhos distintos, mas marcados pelo mesmo ponto de virada',
     quote: 'Os sócios desenvolveram uma metodologia própria, capaz de integrar processos comerciais eficientes, automação estratégica e construção de autoridade digital. O objetivo não era apenas aumentar vendas, mas criar um modelo de crescimento consistente.',
-    logo: '/press-pequenas-empresas.png',
-    logoBg: '#D35400',
+    image: '/pequenas-empresas.webp',
   },
 ]
 
@@ -462,32 +459,26 @@ function PressSection() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
           {pressItems.map((item, i) => (
             <FadeUp key={i} delay={i * 80}>
-              <div className="card" style={{ padding: '28px 26px', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ fontSize: 32, color: '#E01515', fontWeight: 900, lineHeight: 1, marginBottom: 10, fontFamily: 'Georgia, serif' }}>"</div>
-                <p style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A', lineHeight: 1.4, marginBottom: 12 }}>
-                  {item.title}
-                </p>
-                <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.65, marginBottom: 20, fontStyle: 'italic', flexGrow: 1 }}>
-                  {item.quote}
-                </p>
-                {/* Logo do veículo */}
-                <div style={{
-                  background: item.logoBg,
-                  borderRadius: 8,
-                  padding: '10px 14px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: 52,
-                  border: '1px solid rgba(0,0,0,0.07)',
-                }}>
+              <div className="card" style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                {/* Imagem no topo */}
+                <div style={{ width: '100%', aspectRatio: '16/7', position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
                   <Image
-                    src={item.logo}
+                    src={item.image}
                     alt={item.outlet}
-                    width={140}
-                    height={36}
-                    style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
                   />
+                </div>
+                {/* Conteúdo */}
+                <div style={{ padding: '24px 26px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <div style={{ fontSize: 28, color: '#E01515', fontWeight: 900, lineHeight: 1, marginBottom: 8, fontFamily: 'Georgia, serif' }}>"</div>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A', lineHeight: 1.4, marginBottom: 10 }}>
+                    {item.title}
+                  </p>
+                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.65, marginBottom: 16, fontStyle: 'italic', flexGrow: 1 }}>
+                    {item.quote}
+                  </p>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{item.outlet}</p>
                 </div>
               </div>
             </FadeUp>
