@@ -102,29 +102,30 @@ function AcademyHeroSection() {
           </div>
 
           <h1 style={{
-            fontSize: 'clamp(28px, 5vw, 58px)',
+            fontSize: 'clamp(26px, 4.5vw, 54px)',
             fontWeight: 900,
-            lineHeight: 1.08,
-            letterSpacing: '-0.035em',
+            lineHeight: 1.12,
+            letterSpacing: '-0.03em',
             color: '#FFFFFF',
             marginBottom: 20,
           }}>
-            Acesse o{' '}
-            <span style={{ color: '#FFFFFF' }}>
-              Full Sales Academy
-            </span>
+            Se sua empresa ainda não alcança R$50 mil mensais...{' '}
+            <br />
+            o{' '}
+            <span style={{ color: '#E01515' }}>Full Sales Academy</span>
+            {' '}é o upgrade que você precisa para potencializar seus resultados e alcançar o próximo nível.
           </h1>
 
           <p style={{
-            fontSize: 'clamp(15px, 2vw, 19px)',
+            fontSize: 'clamp(15px, 2vw, 18px)',
             color: 'rgba(255,255,255,0.6)',
             lineHeight: 1.65,
-            maxWidth: 620,
+            maxWidth: 640,
             margin: '0 auto 52px',
           }}>
-            O conteúdo que já estruturou o comercial de mais de{' '}
-            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>{' '}
-            em uma plataforma completa — aprenda a construir um sistema comercial com previsibilidade, escala e liberdade.
+            Uma plataforma completa com todo o conteúdo que já estruturou o comercial de mais de{' '}
+            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>
+            {' '}— aprenda a construir um sistema comercial com previsibilidade, escala e liberdade.
           </p>
 
           {/* Pricing cards */}
