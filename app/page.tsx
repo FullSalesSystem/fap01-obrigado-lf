@@ -256,7 +256,7 @@ const areas2 = [
 
 function TrustSection() {
   return (
-    <section className="section-pad" style={{ background: '#FFFFFF' }}>
+    <section className="section-pad" style={{ background: '#F5F6F8' }}>
       <div className="section-container">
         <FadeUp style={{ textAlign: 'center', marginBottom: 52 }}>
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
@@ -422,7 +422,7 @@ const pressLogos = [
 
 function PressSection() {
   return (
-    <section className="section-pad" style={{ background: '#FFFFFF' }}>
+    <section className="section-pad" style={{ background: '#F5F6F8' }}>
       <div className="section-container">
         <FadeUp style={{ textAlign: 'center', marginBottom: 48 }}>
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
@@ -560,7 +560,7 @@ function Footer() {
 ───────────────────────────────────────────── */
 function HomeContent() {
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#0A0A0A', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#F5F6F8', color: '#0A0A0A', overflowX: 'hidden' }}>
       <Navbar />
       <AcademyHeroSection />
       <TrustSection />
