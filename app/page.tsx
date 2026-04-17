@@ -277,10 +277,9 @@ function TrustSection() {
         </FadeUp>
         <FadeUp delay={120}>
           <div style={{ textAlign: 'center', marginBottom: 28 }}>
-            <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 26px)', fontWeight: 700, color: '#0A0A0A', marginBottom: 6 }}>
-              Áreas que <strong>já atuamos</strong>
+            <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 26px)', fontWeight: 700, color: '#0A0A0A' }}>
+              Áreas que <strong>já implementamos o nosso processo comercial</strong>
             </h3>
-            <p style={{ color: '#6B7280', fontSize: 14 }}>Independente do segmento, o sistema funciona.</p>
           </div>
           <style>{`
             @keyframes fss-left { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 8px)); } }
@@ -341,11 +340,12 @@ function AboutSection() {
           {/* Bio */}
           <FadeUp delay={120}>
             <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.14, marginBottom: 16 }}>
-              A Full Sales System é uma empresa de{' '}
-              <span style={{ color: '#E01515' }}>estruturação comercial</span>, não de cursos
+              A metodologia que gerou mais de{' '}
+              <span style={{ color: '#E01515' }}>R$1 bilhão</span>{' '}
+              para empresas — condensada em uma plataforma acessível para qualquer profissional de vendas
             </h2>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 24 }}>
-              Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System é uma consultoria especializada em equipes comerciais que ajuda empresas a otimizarem o ROI de seus funis de vendas. Com mais de 8 anos de experiência, a FSS acumula mais de 600 empresas aceleradas, mais de R$110 milhões em vendas próprias e mais de R$1 bilhão em faturamento gerado para seus clientes.
+              Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System tem mais de 8 anos estruturando operações comerciais. O Full Sales Academy reúne esse mesmo conhecimento em conteúdos práticos que você aplica a partir de hoje.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
               {[
