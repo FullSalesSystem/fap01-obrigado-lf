@@ -121,19 +121,26 @@ function AcademyHeroSection() {
       <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center', paddingTop: 72 }}>
         <FadeUp>
 
+          <p style={{
+            fontSize: 'clamp(15px, 2vw, 18px)',
+            color: 'rgba(255,255,255,0.6)',
+            lineHeight: 1.65,
+            maxWidth: 680,
+            margin: '0 auto 16px',
+          }}>
+            Enquanto isso, use esse tempo a seu favor...
+          </p>
+
           <h1 style={{
-            fontSize: 'clamp(26px, 4.4vw, 50px)',
+            fontSize: 'clamp(22px, 3.4vw, 40px)',
             fontWeight: 900,
-            lineHeight: 1.12,
-            letterSpacing: '-0.03em',
+            lineHeight: 1.14,
+            letterSpacing: '-0.025em',
             color: '#FFFFFF',
             marginBottom: 20,
           }}>
-            Enquanto isso, use esse tempo a seu favor: o{' '}
-            <span style={{ background: 'linear-gradient(90deg, #E01515 0%, #1E52E8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Full Sales Academy
-            </span>{' '}
-            reúne tudo que você precisa para dominar vendas e estruturar uma operação comercial de verdade
+            o Full Sales Academy reúne tudo que você precisa para{' '}
+            <span style={{ color: '#E01515' }}>dominar vendas e estruturar uma operação comercial</span>
           </h1>
 
           <p style={{
@@ -243,16 +250,121 @@ const areas2 = [
   { icon: '🎓', text: 'Educação' },
 ]
 
+/* ─────────────────────────────────────────────
+   MÓDULOS DO ACADEMY
+───────────────────────────────────────────── */
+const academyModules = [
+  { icon: '🎯', title: 'Prospecção ativa' },
+  { icon: '🔍', title: 'Qualificação de leads' },
+  { icon: '📝', title: 'Roteiros e Scripts' },
+  { icon: '💬', title: 'Objeções e Negociação' },
+  { icon: '🤝', title: 'Fechamento de vendas' },
+  { icon: '📞', title: 'Follow-up estruturado' },
+  { icon: '📊', title: 'Gestão de Pipeline' },
+  { icon: '📈', title: 'Métricas e KPIs' },
+  { icon: '🧭', title: 'Liderança Comercial' },
+  { icon: '🧲', title: 'Recrutamento de Vendedores' },
+  { icon: '🚀', title: 'Onboarding e Ramp-up' },
+  { icon: '📚', title: 'Playbooks Operacionais' },
+  { icon: '🔮', title: 'Forecast e Previsibilidade' },
+  { icon: '♟️', title: 'Estratégia Comercial' },
+]
+
+function ModulesSection() {
+  return (
+    <section className="section-pad" style={{ background: '#FFFFFF' }}>
+      <div className="section-container">
+        <FadeUp style={{ textAlign: 'center', marginBottom: 40 }}>
+          <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
+            Mais de 14 módulos, cursos e ferramentas práticas no mesmo lugar
+          </h2>
+          <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.6 }}>
+            Cada conteúdo foi criado para resolver um ponto específico da sua operação comercial. Veja o que você acessa hoje:
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={80}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
+            {academyModules.map((m, i) => (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                background: '#FFFFFF',
+                border: '1px solid rgba(0,0,0,0.08)',
+                borderRadius: 12,
+                padding: '16px 18px',
+                boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+              }}>
+                <span style={{ fontSize: 22, lineHeight: 1 }}>{m.icon}</span>
+                <span style={{ fontSize: 14, fontWeight: 600, color: '#0A0A0A', lineHeight: 1.35 }}>{m.title}</span>
+              </div>
+            ))}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  )
+}
+
+/* ─────────────────────────────────────────────
+   FULL SALES FLIX
+───────────────────────────────────────────── */
+const flixFeatures = [
+  { icon: '📘', title: 'Playbooks prontos', desc: 'Modelos operacionais para aplicar direto na sua empresa.' },
+  { icon: '🎬', title: 'Análises de call reais', desc: 'Casos comentados por Yuri Barbosa com diagnósticos precisos.' },
+  { icon: '🗺️', title: 'Guias práticos', desc: 'Passo a passo detalhado para cada etapa do processo comercial.' },
+  { icon: '🎤', title: 'Workshops exclusivos', desc: 'Encontros com especialistas convidados e conteúdo novo toda semana.' },
+]
+
+function FlixSection() {
+  return (
+    <section className="section-pad" style={{ background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 80% 20%, rgba(224,21,21,0.14) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(30,82,232,0.12) 0%, transparent 55%)', pointerEvents: 'none' }} />
+
+      <div className="section-container" style={{ position: 'relative' }}>
+        <FadeUp style={{ textAlign: 'center', marginBottom: 40, maxWidth: 720, margin: '0 auto 40px' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: '#E01515', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 14 }}>
+            Full Sales Flix
+          </div>
+          <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.14 }}>
+            Além dos cursos, você ainda acessa o{' '}
+            <span style={{ color: '#E01515' }}>Full Sales Flix</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'clamp(15px, 2vw, 17px)', lineHeight: 1.65, marginTop: 14 }}>
+            Uma biblioteca completa com playbooks, estudos de caso, guias práticos e workshops com especialistas. Conteúdo novo sendo adicionado regularmente.
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={80}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+            {flixFeatures.map((f, i) => (
+              <div key={i} style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 14,
+                padding: '24px 22px',
+              }}>
+                <div style={{ fontSize: 28, lineHeight: 1, marginBottom: 14 }}>{f.icon}</div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: '#FFFFFF', marginBottom: 6 }}>{f.title}</div>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.55 }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  )
+}
+
 function TrustSection() {
   return (
     <section className="section-pad" style={{ background: '#F5F6F8' }}>
       <div className="section-container">
         <FadeUp style={{ textAlign: 'center', marginBottom: 52 }}>
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
-            +600 empresas já atuaram com a Full Sales System
+            O mesmo método que estruturou mais de 600 operações comerciais agora está disponível para você
           </h2>
-          <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 520, margin: '12px auto 0' }}>
-            De escritórios de advocacia a empresas de tecnologia, em todos os segmentos
+          <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 620, margin: '12px auto 0' }}>
+            De escritórios de advocacia a empresas de tecnologia, o sistema funciona independente do segmento.
           </p>
         </FadeUp>
         <FadeUp delay={80}>
@@ -270,10 +382,9 @@ function TrustSection() {
         </FadeUp>
         <FadeUp delay={120}>
           <div style={{ textAlign: 'center', marginBottom: 28 }}>
-            <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 26px)', fontWeight: 700, color: '#0A0A0A', marginBottom: 6 }}>
-              Áreas que <strong>já atuamos</strong>
+            <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 26px)', fontWeight: 700, color: '#0A0A0A' }}>
+              Áreas que <strong>já implementamos o nosso processo comercial</strong>
             </h3>
-            <p style={{ color: '#6B7280', fontSize: 14 }}>Independente do segmento, o sistema funciona.</p>
           </div>
           <style>{`
             @keyframes fss-left { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 8px)); } }
@@ -309,17 +420,15 @@ function TrustSection() {
 ───────────────────────────────────────────── */
 function AboutSection() {
   return (
-    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      {/* overlay */}
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.80)', pointerEvents: 'none' }} />
-      <div className="section-container" style={{ position: 'relative' }}>
+    <section className="section-pad" style={{ background: '#FFFFFF' }}>
+      <div className="section-container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 56, alignItems: 'center' }}>
           {/* Photo */}
           <FadeUp>
             <div style={{
               width: '100%', maxWidth: 420, aspectRatio: '4/5',
               borderRadius: 16, position: 'relative', overflow: 'hidden',
-              boxShadow: '0 4px 32px rgba(0,0,0,0.4)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
             }}>
               <Image
                 src="/socios.png"
@@ -327,18 +436,19 @@ function AboutSection() {
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center top' }}
               />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%)', pointerEvents: 'none' }} />
             </div>
           </FadeUp>
 
           {/* Bio */}
           <FadeUp delay={120}>
-            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.14, marginBottom: 16 }}>
-              A Full Sales System é uma empresa de{' '}
-              <span style={{ color: '#E01515' }}>estruturação comercial</span>, não de cursos
+            <h2 style={{ fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.18, marginBottom: 16 }}>
+              A metodologia que gerou mais de{' '}
+              <span style={{ color: '#E01515' }}>R$1 bilhão</span>{' '}
+              para empresas — condensada em uma plataforma acessível
             </h2>
-            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 24 }}>
-              Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System é uma consultoria especializada em equipes comerciais que ajuda empresas a otimizarem o ROI de seus funis de vendas. Com mais de 8 anos de experiência, a FSS acumula mais de 600 empresas aceleradas, mais de R$110 milhões em vendas próprias e mais de R$1 bilhão em faturamento gerado para seus clientes.
+            <p style={{ fontSize: 15, color: '#525252', lineHeight: 1.7, marginBottom: 24 }}>
+              Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System tem mais de 8 anos estruturando operações comerciais. O Full Sales Academy reúne esse mesmo conhecimento em conteúdos práticos que você aplica a partir de hoje.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
               {[
@@ -349,7 +459,7 @@ function AboutSection() {
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                   <IconCheck />
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55 }}>{item}</p>
+                  <p style={{ fontSize: 14, color: '#525252', lineHeight: 1.55 }}>{item}</p>
                 </div>
               ))}
             </div>
@@ -402,7 +512,7 @@ function PressSection() {
             Full Sales System na Mídia
           </h2>
           <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 480, margin: '12px auto 0' }}>
-            Como a imprensa fala sobre a metodologia da Full Sales System
+            O reconhecimento do mercado sobre quem criou o método que você está prestes a acessar.
           </p>
         </FadeUp>
 
@@ -469,6 +579,104 @@ function PressSection() {
 }
 
 /* ─────────────────────────────────────────────
+   OFERTA
+───────────────────────────────────────────── */
+const offerIncludes = [
+  'Mais de 14 módulos e cursos completos do Full Sales Academy',
+  'Acesso completo ao Full Sales Flix e sua biblioteca de playbooks e guias',
+  'Workshops exclusivos com especialistas convidados',
+  'Análises de call reais comentadas por Yuri Barbosa',
+  'Diagnósticos de negócios ao vivo com Vinícius de Sá',
+  'Atualizações e novos conteúdos incluídos sem custo adicional',
+  'Acesso imediato após a confirmação do pagamento',
+]
+
+function OfferSection() {
+  return (
+    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.78)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 20% 20%, rgba(224,21,21,0.14) 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(30,82,232,0.12) 0%, transparent 55%)', pointerEvents: 'none' }} />
+
+      <div className="section-container" style={{ position: 'relative', maxWidth: 960 }}>
+        <FadeUp style={{ textAlign: 'center', marginBottom: 40 }}>
+          <h2 style={{ fontSize: 'clamp(22px, 3.2vw, 36px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.12 }}>
+            Garanta seu acesso ao{' '}
+            <span style={{ color: '#E01515' }}>Full Sales Academy</span>{' '}
+            agora
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(15px, 2vw, 17px)', lineHeight: 1.65, marginTop: 14, maxWidth: 580, margin: '14px auto 0' }}>
+            Tudo que você precisa para estruturar, evoluir e dominar o processo comercial — em um único lugar, por um único preço.
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={80}>
+          <div style={{
+            background: 'linear-gradient(145deg, rgba(224,21,21,0.14) 0%, rgba(30,82,232,0.10) 100%)',
+            border: '1px solid rgba(224,21,21,0.35)',
+            borderRadius: 20,
+            padding: 'clamp(28px, 4vw, 44px)',
+            position: 'relative',
+            backdropFilter: 'blur(8px)',
+          }}>
+            <div style={{
+              position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)',
+              background: '#E01515', color: '#fff', fontSize: 11, fontWeight: 800,
+              padding: '4px 16px', borderRadius: 100, letterSpacing: '0.06em',
+              whiteSpace: 'nowrap', textTransform: 'uppercase',
+            }}>
+              Oferta especial
+            </div>
+
+            <div style={{ textAlign: 'center', marginBottom: 28 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 14 }}>
+                Acesso Anual
+              </div>
+              <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', marginBottom: 6 }}>
+                De <span style={{ textDecoration: 'line-through' }}>R$1.164</span> por apenas
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, justifyContent: 'center', marginBottom: 6 }}>
+                <span style={{ fontSize: 20, fontWeight: 700, color: '#fff', alignSelf: 'flex-start', marginTop: 10 }}>R$</span>
+                <span style={{ fontSize: 'clamp(54px, 9vw, 76px)', fontWeight: 900, color: '#fff', lineHeight: 1 }}>597</span>
+              </div>
+              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>
+                à vista — equivale a R$49,75/mês
+              </div>
+            </div>
+
+            <div style={{ height: 1, background: 'rgba(255,255,255,0.08)', margin: '4px 0 24px' }} />
+
+            <div style={{ marginBottom: 28 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.85)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 16 }}>
+                O que está incluso:
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {offerIncludes.map((item, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0, marginTop: 2 }}>
+                      <circle cx="10" cy="10" r="10" fill="rgba(224,21,21,0.18)" />
+                      <path d="M6 10.5L8.8 13L14 7" stroke="#E01515" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.82)', lineHeight: 1.55 }}>{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ width: '100%', fontSize: 15, padding: '16px 20px', display: 'flex', justifyContent: 'center', boxSizing: 'border-box' as const }}>
+              Garantir Acesso Anual — R$597 <IconArrow />
+            </a>
+
+            <p style={{ textAlign: 'center', marginTop: 14, fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>
+              Pagamento seguro. Acesso imediato. Cancele quando quiser.
+            </p>
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  )
+}
+
+/* ─────────────────────────────────────────────
    FOOTER (dark)
 ───────────────────────────────────────────── */
 function Footer() {
@@ -504,12 +712,12 @@ function Footer() {
           borderRadius: 14, padding: '26px 32px',
           display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 20, marginBottom: 36,
         }}>
-          <div>
-            <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 4 }}>Garanta seu acesso ao Full Sales Academy</p>
-            <p style={{ fontSize: 13, color: '#A1A1AA' }}>R$597/ano à vista ou 12× de R$97 no cartão.</p>
+          <div style={{ flex: '1 1 320px' }}>
+            <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 6 }}>Tudo isso por menos de R$50 por mês</p>
+            <p style={{ fontSize: 13, color: '#A1A1AA', lineHeight: 1.55 }}>14+ módulos. Biblioteca completa. Playbooks, análises de call reais e workshops exclusivos. Acesso imediato assim que você garantir sua vaga.</p>
           </div>
           <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ fontSize: 14, padding: '14px 24px' }}>
-            Garantir Acesso <IconArrow />
+            Garantir Acesso Anual — R$597 <IconArrow />
           </a>
         </div>
 
@@ -521,7 +729,7 @@ function Footer() {
               <a href="https://fss.fullsalessystem.com/termos-de-uso" target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: '#52525B', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#A1A1AA')} onMouseLeave={e => (e.currentTarget.style.color = '#52525B')}>Termos de Uso</a>
             </div>
           </div>
-          <p style={{ fontSize: 13, color: '#52525B' }}>Feito para empresários que constroem de verdade.</p>
+          <p style={{ fontSize: 13, color: '#52525B' }}>Feito para quem leva vendas a sério.</p>
         </div>
       </div>
     </footer>
@@ -536,7 +744,10 @@ function HomeContent() {
     <main style={{ backgroundColor: '#F5F6F8', color: '#0A0A0A', overflowX: 'hidden' }}>
       <Navbar />
       <AcademyHeroSection />
+      <ModulesSection />
+      <FlixSection />
       <TrustSection />
+      <OfferSection />
       <AboutSection />
       <PressSection />
       <Footer />
