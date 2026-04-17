@@ -86,16 +86,41 @@ function Navbar() {
 }
 
 /* ─────────────────────────────────────────────
+   NOTIFICATION BAR — confirmação de aplicação
+───────────────────────────────────────────── */
+function NotificationBar() {
+  return (
+    <div style={{
+      position: 'relative',
+      zIndex: 2,
+      background: '#E01515',
+      color: '#FFFFFF',
+      padding: '14px 20px',
+      textAlign: 'center',
+      fontSize: 'clamp(13px, 1.6vw, 16px)',
+      fontWeight: 800,
+      letterSpacing: '0.01em',
+      lineHeight: 1.4,
+      textTransform: 'uppercase',
+    }}>
+      Sua aplicação foi recebida. Nosso time entrará em contato em breve para agendar sua reunião de diagnóstico.
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────
    ACADEMY HERO — dark, com pricing
 ───────────────────────────────────────────── */
 function AcademyHeroSection() {
   return (
-    <section style={{ paddingTop: 96, paddingBottom: 96, background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ paddingTop: 64, paddingBottom: 96, background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
+      <NotificationBar />
+
       {/* background glows */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(ellipse at 20% 40%, rgba(224,21,21,0.14) 0%, transparent 55%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', top: 0, right: 0, width: '60%', height: '100%', background: 'radial-gradient(ellipse at 80% 50%, rgba(30,82,232,0.1) 0%, transparent 55%)', pointerEvents: 'none' }} />
 
-      <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center' }}>
+      <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center', paddingTop: 72 }}>
         <FadeUp>
           {/* eyebrow */}
           <div style={{ marginBottom: 20, fontSize: 'clamp(11px, 1.4vw, 13px)', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>
@@ -103,34 +128,33 @@ function AcademyHeroSection() {
           </div>
 
           <h1 style={{
-            fontSize: 'clamp(28px, 5vw, 58px)',
+            fontSize: 'clamp(26px, 4.4vw, 50px)',
             fontWeight: 900,
-            lineHeight: 1.08,
-            letterSpacing: '-0.035em',
+            lineHeight: 1.12,
+            letterSpacing: '-0.03em',
             color: '#FFFFFF',
             marginBottom: 20,
           }}>
-            Acesse o{' '}
+            Enquanto isso, use esse tempo a seu favor: o{' '}
             <span style={{ background: 'linear-gradient(90deg, #E01515 0%, #1E52E8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Full Sales Academy
-            </span>
+            </span>{' '}
+            reúne tudo que você precisa para dominar vendas e estruturar uma operação comercial de verdade
           </h1>
 
           <p style={{
             fontSize: 'clamp(15px, 2vw, 19px)',
             color: 'rgba(255,255,255,0.6)',
             lineHeight: 1.65,
-            maxWidth: 620,
+            maxWidth: 680,
             margin: '0 auto 52px',
           }}>
-            O conteúdo que já estruturou o comercial de mais de{' '}
-            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>{' '}
-            em uma plataforma completa — aprenda a construir um sistema comercial com previsibilidade, escala e liberdade.
+            Scripts, playbooks, ferramentas de gestão, cursos de liderança e muito mais — o mesmo conteúdo que já estruturou o comercial de mais de{' '}
+            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>, agora acessível para você aplicar hoje.
           </p>
 
-          {/* Pricing cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, maxWidth: 560, margin: '0 auto 40px' }}>
-
+          {/* Pricing card — somente anual */}
+          <div style={{ maxWidth: 360, margin: '0 auto 32px' }}>
             {/* Anual */}
             <div style={{
               background: 'linear-gradient(145deg, rgba(224,21,21,0.18) 0%, rgba(30,82,232,0.12) 100%)',
@@ -157,42 +181,19 @@ function AcademyHeroSection() {
                 Garantir Acesso Anual <IconArrow />
               </a>
             </div>
-
-            {/* Parcelado */}
-            <div style={{
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 18,
-              padding: '32px 24px 24px',
-            }}>
-              <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Acesso Parcelado</div>
-              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, justifyContent: 'center', marginBottom: 4 }}>
-                <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: 10 }}>12× de</span>
-                <span style={{ fontSize: 'clamp(32px, 5vw, 42px)', fontWeight: 900, color: '#E01515', lineHeight: 1, marginLeft: 6 }}>R$97</span>
-              </div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 24 }}>no cartão de crédito</div>
-              <a
-                href={CHECKOUT_MENSAL_URL}
-                style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  width: '100%', fontSize: 14, padding: '13px 16px', borderRadius: 8,
-                  border: '1px solid rgba(255,255,255,0.18)', color: '#fff', fontWeight: 700,
-                  textDecoration: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' as const,
-                }}
-              >
-                Parcelar em 12× <IconArrow />
-              </a>
-            </div>
           </div>
 
           {/* micro trust */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
-            {['Acesso imediato', '+600 empresas estruturadas'].map((t, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 7, color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                <span>{t}</span>
-              </div>
-            ))}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', alignItems: 'center', color: 'rgba(255,255,255,0.5)', fontSize: 13 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span>Acesso imediato</span>
+            </div>
+            <span style={{ color: 'rgba(255,255,255,0.25)' }}>·</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span>+600 empresas estruturadas</span>
+            </div>
           </div>
         </FadeUp>
       </div>
