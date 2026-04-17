@@ -277,10 +277,9 @@ function TrustSection() {
         </FadeUp>
         <FadeUp delay={120}>
           <div style={{ textAlign: 'center', marginBottom: 28 }}>
-            <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 26px)', fontWeight: 700, color: '#0A0A0A', marginBottom: 6 }}>
-              Áreas que <strong>já atuamos</strong>
+            <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 26px)', fontWeight: 700, color: '#0A0A0A' }}>
+              Áreas que <strong>já implementamos o nosso processo comercial</strong>
             </h3>
-            <p style={{ color: '#6B7280', fontSize: 14 }}>Independente do segmento, o sistema funciona.</p>
           </div>
           <style>{`
             @keyframes fss-left { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 8px)); } }
@@ -341,11 +340,12 @@ function AboutSection() {
           {/* Bio */}
           <FadeUp delay={120}>
             <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.14, marginBottom: 16 }}>
-              A Full Sales System é uma empresa de{' '}
-              <span style={{ color: '#E01515' }}>estruturação comercial</span>, não de cursos
+              A metodologia que gerou mais de{' '}
+              <span style={{ color: '#E01515' }}>R$1 bilhão</span>{' '}
+              para empresas — condensada em uma plataforma acessível para qualquer profissional de vendas
             </h2>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 24 }}>
-              Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System é uma consultoria especializada em equipes comerciais que ajuda empresas a otimizarem o ROI de seus funis de vendas. Com mais de 8 anos de experiência, a FSS acumula mais de 600 empresas aceleradas, mais de R$110 milhões em vendas próprias e mais de R$1 bilhão em faturamento gerado para seus clientes.
+              Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System tem mais de 8 anos estruturando operações comerciais. O Full Sales Academy reúne esse mesmo conhecimento em conteúdos práticos que você aplica a partir de hoje.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
               {[
@@ -409,7 +409,7 @@ function PressSection() {
             Full Sales System na Mídia
           </h2>
           <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 480, margin: '12px auto 0' }}>
-            Como a imprensa fala sobre a metodologia da Full Sales System
+            O reconhecimento do mercado sobre quem criou o método que você está prestes a acessar.
           </p>
         </FadeUp>
 
@@ -608,12 +608,12 @@ function Footer() {
           borderRadius: 14, padding: '26px 32px',
           display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 20, marginBottom: 36,
         }}>
-          <div>
-            <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 4 }}>Garanta seu acesso ao Full Sales Academy</p>
-            <p style={{ fontSize: 13, color: '#A1A1AA' }}>R$597/ano à vista ou 12× de R$97 no cartão.</p>
+          <div style={{ flex: '1 1 320px' }}>
+            <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 6 }}>Tudo isso por menos de R$50 por mês</p>
+            <p style={{ fontSize: 13, color: '#A1A1AA', lineHeight: 1.55 }}>14+ módulos. Biblioteca completa. Playbooks, análises de call reais e workshops exclusivos. Acesso imediato assim que você garantir sua vaga.</p>
           </div>
           <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ fontSize: 14, padding: '14px 24px' }}>
-            Garantir Acesso <IconArrow />
+            Garantir Acesso Anual — R$597 <IconArrow />
           </a>
         </div>
 
@@ -625,7 +625,7 @@ function Footer() {
               <a href="https://fss.fullsalessystem.com/termos-de-uso" target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: '#52525B', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#A1A1AA')} onMouseLeave={e => (e.currentTarget.style.color = '#52525B')}>Termos de Uso</a>
             </div>
           </div>
-          <p style={{ fontSize: 13, color: '#52525B' }}>Feito para empresários que constroem de verdade.</p>
+          <p style={{ fontSize: 13, color: '#52525B' }}>Feito para quem leva vendas a sério.</p>
         </div>
       </div>
     </footer>
