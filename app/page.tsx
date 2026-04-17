@@ -121,19 +121,30 @@ function AcademyHeroSection() {
       <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center', paddingTop: 72 }}>
         <FadeUp>
 
+          <p style={{
+            fontSize: 'clamp(15px, 2vw, 18px)',
+            color: 'rgba(255,255,255,0.6)',
+            lineHeight: 1.65,
+            maxWidth: 680,
+            margin: '0 auto 16px',
+          }}>
+            Enquanto isso, use esse tempo a seu favor...
+          </p>
+
           <h1 style={{
-            fontSize: 'clamp(26px, 4.4vw, 50px)',
+            fontSize: 'clamp(22px, 3.4vw, 40px)',
             fontWeight: 900,
-            lineHeight: 1.12,
-            letterSpacing: '-0.03em',
+            lineHeight: 1.14,
+            letterSpacing: '-0.025em',
             color: '#FFFFFF',
             marginBottom: 20,
           }}>
-            Enquanto isso, use esse tempo a seu favor: o{' '}
+            o{' '}
             <span style={{ background: 'linear-gradient(90deg, #E01515 0%, #1E52E8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Full Sales Academy
             </span>{' '}
-            reúne tudo que você precisa para dominar vendas e estruturar uma operação comercial de verdade
+            reúne tudo que você precisa para{' '}
+            <span style={{ color: '#E01515' }}>dominar vendas e estruturar uma operação comercial</span>
           </h1>
 
           <p style={{
