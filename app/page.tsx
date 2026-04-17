@@ -250,6 +250,111 @@ const areas2 = [
   { icon: '🎓', text: 'Educação' },
 ]
 
+/* ─────────────────────────────────────────────
+   MÓDULOS DO ACADEMY
+───────────────────────────────────────────── */
+const academyModules = [
+  { icon: '🎯', title: 'Prospecção ativa' },
+  { icon: '🔍', title: 'Qualificação de leads' },
+  { icon: '📝', title: 'Roteiros e Scripts' },
+  { icon: '💬', title: 'Objeções e Negociação' },
+  { icon: '🤝', title: 'Fechamento de vendas' },
+  { icon: '📞', title: 'Follow-up estruturado' },
+  { icon: '📊', title: 'Gestão de Pipeline' },
+  { icon: '📈', title: 'Métricas e KPIs' },
+  { icon: '🧭', title: 'Liderança Comercial' },
+  { icon: '🧲', title: 'Recrutamento de Vendedores' },
+  { icon: '🚀', title: 'Onboarding e Ramp-up' },
+  { icon: '📚', title: 'Playbooks Operacionais' },
+  { icon: '🔮', title: 'Forecast e Previsibilidade' },
+  { icon: '♟️', title: 'Estratégia Comercial' },
+]
+
+function ModulesSection() {
+  return (
+    <section className="section-pad" style={{ background: '#FFFFFF' }}>
+      <div className="section-container">
+        <FadeUp style={{ textAlign: 'center', marginBottom: 40 }}>
+          <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
+            Mais de 14 módulos, cursos e ferramentas práticas no mesmo lugar
+          </h2>
+          <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.6 }}>
+            Cada conteúdo foi criado para resolver um ponto específico da sua operação comercial. Veja o que você acessa hoje:
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={80}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
+            {academyModules.map((m, i) => (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                background: '#FFFFFF',
+                border: '1px solid rgba(0,0,0,0.08)',
+                borderRadius: 12,
+                padding: '16px 18px',
+                boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+              }}>
+                <span style={{ fontSize: 22, lineHeight: 1 }}>{m.icon}</span>
+                <span style={{ fontSize: 14, fontWeight: 600, color: '#0A0A0A', lineHeight: 1.35 }}>{m.title}</span>
+              </div>
+            ))}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  )
+}
+
+/* ─────────────────────────────────────────────
+   FULL SALES FLIX
+───────────────────────────────────────────── */
+const flixFeatures = [
+  { icon: '📘', title: 'Playbooks prontos', desc: 'Modelos operacionais para aplicar direto na sua empresa.' },
+  { icon: '🎬', title: 'Análises de call reais', desc: 'Casos comentados por Yuri Barbosa com diagnósticos precisos.' },
+  { icon: '🗺️', title: 'Guias práticos', desc: 'Passo a passo detalhado para cada etapa do processo comercial.' },
+  { icon: '🎤', title: 'Workshops exclusivos', desc: 'Encontros com especialistas convidados e conteúdo novo toda semana.' },
+]
+
+function FlixSection() {
+  return (
+    <section className="section-pad" style={{ background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 80% 20%, rgba(224,21,21,0.14) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(30,82,232,0.12) 0%, transparent 55%)', pointerEvents: 'none' }} />
+
+      <div className="section-container" style={{ position: 'relative' }}>
+        <FadeUp style={{ textAlign: 'center', marginBottom: 40, maxWidth: 720, margin: '0 auto 40px' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: '#E01515', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 14 }}>
+            Full Sales Flix
+          </div>
+          <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.14 }}>
+            Além dos cursos, você ainda acessa o{' '}
+            <span style={{ color: '#E01515' }}>Full Sales Flix</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 'clamp(15px, 2vw, 17px)', lineHeight: 1.65, marginTop: 14 }}>
+            Uma biblioteca completa com playbooks, estudos de caso, guias práticos e workshops com especialistas. Conteúdo novo sendo adicionado regularmente.
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={80}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+            {flixFeatures.map((f, i) => (
+              <div key={i} style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 14,
+                padding: '24px 22px',
+              }}>
+                <div style={{ fontSize: 28, lineHeight: 1, marginBottom: 14 }}>{f.icon}</div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: '#FFFFFF', marginBottom: 6 }}>{f.title}</div>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.55 }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  )
+}
+
 function TrustSection() {
   return (
     <section className="section-pad" style={{ background: '#F5F6F8' }}>
@@ -639,6 +744,8 @@ function HomeContent() {
     <main style={{ backgroundColor: '#F5F6F8', color: '#0A0A0A', overflowX: 'hidden' }}>
       <Navbar />
       <AcademyHeroSection />
+      <ModulesSection />
+      <FlixSection />
       <TrustSection />
       <OfferSection />
       <AboutSection />
