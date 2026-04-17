@@ -139,11 +139,7 @@ function AcademyHeroSection() {
             color: '#FFFFFF',
             marginBottom: 20,
           }}>
-            o{' '}
-            <span style={{ background: 'linear-gradient(90deg, #E01515 0%, #1E52E8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Full Sales Academy
-            </span>{' '}
-            reúne tudo que você precisa para{' '}
+            o Full Sales Academy reúne tudo que você precisa para{' '}
             <span style={{ color: '#E01515' }}>dominar vendas e estruturar uma operação comercial</span>
           </h1>
 
@@ -260,10 +256,10 @@ function TrustSection() {
       <div className="section-container">
         <FadeUp style={{ textAlign: 'center', marginBottom: 52 }}>
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
-            +600 empresas já atuaram com a Full Sales System
+            O mesmo método que estruturou mais de 600 operações comerciais agora está disponível para você
           </h2>
-          <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 520, margin: '12px auto 0' }}>
-            De escritórios de advocacia a empresas de tecnologia, em todos os segmentos
+          <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 620, margin: '12px auto 0' }}>
+            De escritórios de advocacia a empresas de tecnologia, o sistema funciona independente do segmento.
           </p>
         </FadeUp>
         <FadeUp delay={80}>
@@ -497,13 +493,11 @@ function OfferSection() {
     <section className="section-pad" style={{ background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(ellipse at 20% 20%, rgba(224,21,21,0.14) 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(30,82,232,0.12) 0%, transparent 55%)', pointerEvents: 'none' }} />
 
-      <div className="section-container" style={{ position: 'relative', maxWidth: 720 }}>
+      <div className="section-container" style={{ position: 'relative', maxWidth: 960 }}>
         <FadeUp style={{ textAlign: 'center', marginBottom: 40 }}>
-          <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.12 }}>
+          <h2 style={{ fontSize: 'clamp(22px, 3.2vw, 36px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.12 }}>
             Garanta seu acesso ao{' '}
-            <span style={{ background: 'linear-gradient(90deg, #E01515 0%, #1E52E8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Full Sales Academy
-            </span>{' '}
+            <span style={{ color: '#E01515' }}>Full Sales Academy</span>{' '}
             agora
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(15px, 2vw, 17px)', lineHeight: 1.65, marginTop: 14, maxWidth: 580, margin: '14px auto 0' }}>
@@ -647,8 +641,8 @@ function HomeContent() {
       <Navbar />
       <AcademyHeroSection />
       <TrustSection />
-      <AboutSection />
       <OfferSection />
+      <AboutSection />
       <PressSection />
       <Footer />
     </main>
