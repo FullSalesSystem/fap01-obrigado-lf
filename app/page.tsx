@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 // ─── CONFIGURAR ESTES VALORES ──────────────────────────────────────────────────
 const CHECKOUT_ANUAL_URL  = 'https://clkdmg.site/subscribe/oto-anual-fssflix'
-const CHECKOUT_MENSAL_URL = 'https://COLOQUE_URL_DO_CHECKOUT_MENSAL_AQUI'
+const CHECKOUT_MENSAL_URL = 'https://clkdmg.site/subscribe/oto-mensal-fssflix'
 const YOUTUBE_PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLzJ4B1s6bJZ2DL9jhvEgx2ANhwi6LiQk_'
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -72,7 +72,7 @@ function Navbar() {
       transition: 'all 0.35s',
     }}>
       <div className="section-container" style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <img src="/logo-fss.png" alt="Full Sales System" style={{ height: 36, width: 'auto', display: 'block', filter: scrolled ? 'none' : 'brightness(0) invert(1)' }} />
+        <img src="/logo-fss-branco.png" alt="Full Sales System" style={{ height: 36, width: 'auto', display: 'block', filter: scrolled ? 'brightness(0)' : 'none' }} />
         <a
           href={CHECKOUT_ANUAL_URL}
           className="btn-primary"
@@ -86,51 +86,69 @@ function Navbar() {
 }
 
 /* ─────────────────────────────────────────────
+   NOTIFICATION BAR — confirmação de aplicação
+───────────────────────────────────────────── */
+function NotificationBar() {
+  return (
+    <div style={{
+      position: 'relative',
+      zIndex: 2,
+      background: '#E01515',
+      color: '#FFFFFF',
+      padding: '14px 20px',
+      textAlign: 'center',
+      fontSize: 'clamp(13px, 1.6vw, 16px)',
+      fontWeight: 800,
+      letterSpacing: '0.01em',
+      lineHeight: 1.4,
+      textTransform: 'uppercase',
+    }}>
+      Sua aplicação foi recebida. Nosso time entrará em contato em breve para agendar sua reunião de diagnóstico.
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────
    ACADEMY HERO — dark, com pricing
 ───────────────────────────────────────────── */
 function AcademyHeroSection() {
   return (
-    <section style={{ paddingTop: 96, paddingBottom: 96, background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
-      {/* background glows */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(ellipse at 20% 40%, rgba(224,21,21,0.14) 0%, transparent 55%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: 0, right: 0, width: '60%', height: '100%', background: 'radial-gradient(ellipse at 80% 50%, rgba(30,82,232,0.1) 0%, transparent 55%)', pointerEvents: 'none' }} />
+    <section style={{ paddingTop: 64, paddingBottom: 96, position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <NotificationBar />
+      {/* overlay escuro sobre o background */}
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.72)', pointerEvents: 'none' }} />
 
-      <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center' }}>
+      <div className="section-container" style={{ position: 'relative', maxWidth: 860, textAlign: 'center', paddingTop: 72 }}>
         <FadeUp>
-          {/* eyebrow */}
-          <div style={{ marginBottom: 20, fontSize: 'clamp(11px, 1.4vw, 13px)', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>
-            AULAS&nbsp;&nbsp;•&nbsp;&nbsp;FRAMEWORKS&nbsp;&nbsp;•&nbsp;&nbsp;PLAYBOOKS
-          </div>
 
           <h1 style={{
-            fontSize: 'clamp(28px, 5vw, 58px)',
+            fontSize: 'clamp(26px, 4.4vw, 50px)',
             fontWeight: 900,
-            lineHeight: 1.08,
-            letterSpacing: '-0.035em',
+            lineHeight: 1.12,
+            letterSpacing: '-0.03em',
             color: '#FFFFFF',
             marginBottom: 20,
           }}>
-            Acesse o{' '}
+            Enquanto isso, use esse tempo a seu favor: o{' '}
             <span style={{ background: 'linear-gradient(90deg, #E01515 0%, #1E52E8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Full Sales Academy
-            </span>
+            </span>{' '}
+            reúne tudo que você precisa para dominar vendas e estruturar uma operação comercial de verdade
           </h1>
 
           <p style={{
-            fontSize: 'clamp(15px, 2vw, 19px)',
+            fontSize: 'clamp(15px, 2vw, 18px)',
             color: 'rgba(255,255,255,0.6)',
             lineHeight: 1.65,
-            maxWidth: 620,
+            maxWidth: 680,
             margin: '0 auto 52px',
           }}>
-            O conteúdo que já estruturou o comercial de mais de{' '}
-            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>{' '}
-            em uma plataforma completa — aprenda a construir um sistema comercial com previsibilidade, escala e liberdade.
+            Scripts, playbooks, ferramentas de gestão, cursos de liderança e muito mais — o mesmo conteúdo que já estruturou o comercial de mais de{' '}
+            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>, agora acessível para você aplicar hoje.
           </p>
 
-          {/* Pricing cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, maxWidth: 560, margin: '0 auto 40px' }}>
-
+          {/* Pricing card — somente anual */}
+          <div style={{ maxWidth: 360, margin: '0 auto 32px' }}>
             {/* Anual */}
             <div style={{
               background: 'linear-gradient(145deg, rgba(224,21,21,0.18) 0%, rgba(30,82,232,0.12) 100%)',
@@ -157,42 +175,19 @@ function AcademyHeroSection() {
                 Garantir Acesso Anual <IconArrow />
               </a>
             </div>
-
-            {/* Parcelado */}
-            <div style={{
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 18,
-              padding: '32px 24px 24px',
-            }}>
-              <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Acesso Parcelado</div>
-              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, justifyContent: 'center', marginBottom: 4 }}>
-                <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: 10 }}>12× de</span>
-                <span style={{ fontSize: 'clamp(32px, 5vw, 42px)', fontWeight: 900, color: '#E01515', lineHeight: 1, marginLeft: 6 }}>R$97</span>
-              </div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 24 }}>no cartão de crédito</div>
-              <a
-                href={CHECKOUT_MENSAL_URL}
-                style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  width: '100%', fontSize: 14, padding: '13px 16px', borderRadius: 8,
-                  border: '1px solid rgba(255,255,255,0.18)', color: '#fff', fontWeight: 700,
-                  textDecoration: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' as const,
-                }}
-              >
-                Parcelar em 12× <IconArrow />
-              </a>
-            </div>
           </div>
 
           {/* micro trust */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
-            {['Acesso imediato', '+600 empresas estruturadas'].map((t, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 7, color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                <span>{t}</span>
-              </div>
-            ))}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', alignItems: 'center', color: 'rgba(255,255,255,0.5)', fontSize: 13 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span>Acesso imediato</span>
+            </div>
+            <span style={{ color: 'rgba(255,255,255,0.25)' }}>·</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span>+600 empresas estruturadas</span>
+            </div>
           </div>
         </FadeUp>
       </div>
@@ -250,11 +245,11 @@ const areas2 = [
 
 function TrustSection() {
   return (
-    <section className="section-pad" style={{ background: '#FFFFFF' }}>
+    <section className="section-pad" style={{ background: '#F5F6F8' }}>
       <div className="section-container">
         <FadeUp style={{ textAlign: 'center', marginBottom: 52 }}>
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
-            +550 empresas já atuaram com a Full Sales System
+            +600 empresas já atuaram com a Full Sales System
           </h2>
           <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 520, margin: '12px auto 0' }}>
             De escritórios de advocacia a empresas de tecnologia, em todos os segmentos
@@ -314,15 +309,17 @@ function TrustSection() {
 ───────────────────────────────────────────── */
 function AboutSection() {
   return (
-    <section className="section-pad" style={{ background: '#F8F9FA', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-      <div className="section-container">
+    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      {/* overlay */}
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.80)', pointerEvents: 'none' }} />
+      <div className="section-container" style={{ position: 'relative' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 56, alignItems: 'center' }}>
           {/* Photo */}
           <FadeUp>
             <div style={{
               width: '100%', maxWidth: 420, aspectRatio: '4/5',
               borderRadius: 16, position: 'relative', overflow: 'hidden',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
+              boxShadow: '0 4px 32px rgba(0,0,0,0.4)',
             }}>
               <Image
                 src="/socios.png"
@@ -330,45 +327,29 @@ function AboutSection() {
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center top' }}
               />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%)', pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', bottom: 24, right: 24, background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 10, padding: '10px 14px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>
-                <div style={{ fontSize: 18, fontWeight: 800, color: '#16A34A' }}>R$30M</div>
-                <div style={{ fontSize: 11, color: '#9CA3AF', marginTop: 2 }}>no 2º ano</div>
-              </div>
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)', pointerEvents: 'none' }} />
             </div>
           </FadeUp>
 
           {/* Bio */}
           <FadeUp delay={120}>
-            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.14, marginBottom: 16 }}>
+            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.14, marginBottom: 16 }}>
               A Full Sales System é uma empresa de{' '}
               <span style={{ color: '#E01515' }}>estruturação comercial</span>, não de cursos
             </h2>
-            <p style={{ fontSize: 15, color: '#525252', lineHeight: 1.7, marginBottom: 24 }}>
-              Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System é uma consultoria especializada em equipes comerciais que ajuda empresas a otimizarem o ROI de seus funis de vendas. Com mais de 8 anos de experiência, a FSS acumula mais de 550 empresas aceleradas, mais de R$110 milhões em vendas próprias e mais de R$1 bilhão em faturamento gerado para seus clientes.
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 24 }}>
+              Fundada por Vinícius de Sá, Yuri Barbosa e Matheus Garcia, a Full Sales System é uma consultoria especializada em equipes comerciais que ajuda empresas a otimizarem o ROI de seus funis de vendas. Com mais de 8 anos de experiência, a FSS acumula mais de 600 empresas aceleradas, mais de R$110 milhões em vendas próprias e mais de R$1 bilhão em faturamento gerado para seus clientes.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
               {[
-                'Mais de 550 empresas aceleradas no Brasil, Portugal e EUA em segmentos como advocacia, contabilidade, saúde e tech',
+                'Mais de 600 empresas aceleradas no Brasil, Portugal e EUA em segmentos como advocacia, contabilidade, saúde e tech',
                 'Mais de R$1 bilhão em faturamento gerado para empresas aceleradas e mais de R$110 milhões em vendas próprias',
                 'NPS de 87 e nota de avaliação 9,44 com foco em resultado real, não só em conteúdo',
                 'Metodologia própria de 6 pilares que ativa todos os canais de receita da operação comercial',
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                   <IconCheck />
-                  <p style={{ fontSize: 14, color: '#525252', lineHeight: 1.55 }}>{item}</p>
-                </div>
-              ))}
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-              {[
-                { label: '+8 anos', desc: 'de experiência' },
-                { label: '+550 empresas', desc: 'estruturadas' },
-                { label: 'Brasil · Portugal · EUA', desc: 'atuação global' },
-              ].map(t => (
-                <div key={t.label} style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 8, padding: '7px 14px', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A' }}>{t.label}</div>
-                  <div style={{ fontSize: 11, color: '#9CA3AF', marginTop: 1 }}>{t.desc}</div>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.55 }}>{item}</p>
                 </div>
               ))}
             </div>
@@ -388,22 +369,19 @@ const pressItems = [
     outlet: 'Estadão',
     title: 'Full Sales System: três mentes empreendedoras que transformaram desafios em estratégias',
     quote: 'Nos últimos anos, ajudamos os nossos clientes a girar mais de 500 milhões de faturamento em vendas. Mas quando olhamos para esses números enxergamos algo ainda maior: não foi só o aumento nas vendas, mas eles se tornaram protagonistas da própria empresa.',
-    logo: '/estadao-novo.png',
-    logoBg: '#FFFFFF',
+    image: '/estadao.webp',
   },
   {
     outlet: 'Valor Econômico',
     title: 'Full Sales System aponta o caminho para crescer em 2026 com estratégias mais inteligentes',
     quote: 'Empresas que adotam estruturas de vendas inteligentes e estratégias orgânicas robustas tendem a prosperar em cenários de incerteza, criando vantagem competitiva mesmo com menor investimento direto em mídia.',
-    logo: '/press-valor-economico.png',
-    logoBg: '#FFFFFF',
+    image: '/valor-economico.webp',
   },
   {
     outlet: 'Pequenas Empresas & Grandes Negócios',
     title: 'Yuri Barbosa, Vinícius de Sá e Matheus Garcia trilharam caminhos distintos, mas marcados pelo mesmo ponto de virada',
     quote: 'Os sócios desenvolveram uma metodologia própria, capaz de integrar processos comerciais eficientes, automação estratégica e construção de autoridade digital. O objetivo não era apenas aumentar vendas, mas criar um modelo de crescimento consistente.',
-    logo: '/press-pequenas-empresas.png',
-    logoBg: '#D35400',
+    image: '/pequenas-empresas.webp',
   },
 ]
 
@@ -417,7 +395,7 @@ const pressLogos = [
 
 function PressSection() {
   return (
-    <section className="section-pad" style={{ background: '#FFFFFF' }}>
+    <section className="section-pad" style={{ background: '#F5F6F8' }}>
       <div className="section-container">
         <FadeUp style={{ textAlign: 'center', marginBottom: 48 }}>
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
@@ -454,15 +432,27 @@ function PressSection() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
           {pressItems.map((item, i) => (
             <FadeUp key={i} delay={i * 80}>
-              <div className="card" style={{ padding: '28px 26px', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ fontSize: 32, color: '#E01515', fontWeight: 900, lineHeight: 1, marginBottom: 10, fontFamily: 'Georgia, serif' }}>"</div>
-                <p style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A', lineHeight: 1.4, marginBottom: 12 }}>
-                  {item.title}
-                </p>
-                <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.65, marginBottom: 20, fontStyle: 'italic', flexGrow: 1 }}>
-                  {item.quote}
-                </p>
-                <p style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A' }}>{item.outlet}</p>
+              <div className="card" style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                {/* Imagem no topo */}
+                <div style={{ width: '100%', aspectRatio: '16/7', position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
+                  <Image
+                    src={item.image}
+                    alt={item.outlet}
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
+                  />
+                </div>
+                {/* Conteúdo */}
+                <div style={{ padding: '24px 26px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <div style={{ fontSize: 28, color: '#E01515', fontWeight: 900, lineHeight: 1, marginBottom: 8, fontFamily: 'Georgia, serif' }}>"</div>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A', lineHeight: 1.4, marginBottom: 10 }}>
+                    {item.title}
+                  </p>
+                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.65, marginBottom: 16, fontStyle: 'italic', flexGrow: 1 }}>
+                    {item.quote}
+                  </p>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{item.outlet}</p>
+                </div>
               </div>
             </FadeUp>
           ))}
@@ -488,7 +478,7 @@ function Footer() {
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 40, marginBottom: 48 }}>
           <div style={{ maxWidth: 300 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-              <img src="/logo-fss.png" alt="Full Sales System" style={{ height: 40, width: 'auto', display: 'block' }} />
+              <img src="/logo-fss-branco.png" alt="Full Sales System" style={{ height: 40, width: 'auto', display: 'block' }} />
             </div>
             <p style={{ fontSize: 14, color: '#71717A', lineHeight: 1.65 }}>
               Estruturação comercial para empresas que já faturam e querem crescer com processo e previsibilidade.
@@ -543,7 +533,7 @@ function Footer() {
 ───────────────────────────────────────────── */
 function HomeContent() {
   return (
-    <main style={{ backgroundColor: '#FFFFFF', color: '#0A0A0A', overflowX: 'hidden' }}>
+    <main style={{ backgroundColor: '#F5F6F8', color: '#0A0A0A', overflowX: 'hidden' }}>
       <Navbar />
       <AcademyHeroSection />
       <TrustSection />
