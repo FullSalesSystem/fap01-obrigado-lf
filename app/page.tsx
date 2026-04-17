@@ -409,7 +409,7 @@ function PressSection() {
             Full Sales System na Mídia
           </h2>
           <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 480, margin: '12px auto 0' }}>
-            Como a imprensa fala sobre a metodologia da Full Sales System
+            O reconhecimento do mercado sobre quem criou o método que você está prestes a acessar.
           </p>
         </FadeUp>
 
@@ -608,12 +608,12 @@ function Footer() {
           borderRadius: 14, padding: '26px 32px',
           display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 20, marginBottom: 36,
         }}>
-          <div>
-            <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 4 }}>Garanta seu acesso ao Full Sales Academy</p>
-            <p style={{ fontSize: 13, color: '#A1A1AA' }}>R$597/ano à vista ou 12× de R$97 no cartão.</p>
+          <div style={{ flex: '1 1 320px' }}>
+            <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 6 }}>Tudo isso por menos de R$50 por mês</p>
+            <p style={{ fontSize: 13, color: '#A1A1AA', lineHeight: 1.55 }}>14+ módulos. Biblioteca completa. Playbooks, análises de call reais e workshops exclusivos. Acesso imediato assim que você garantir sua vaga.</p>
           </div>
           <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ fontSize: 14, padding: '14px 24px' }}>
-            Garantir Acesso <IconArrow />
+            Garantir Acesso Anual — R$597 <IconArrow />
           </a>
         </div>
 
@@ -625,7 +625,7 @@ function Footer() {
               <a href="https://fss.fullsalessystem.com/termos-de-uso" target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: '#52525B', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#A1A1AA')} onMouseLeave={e => (e.currentTarget.style.color = '#52525B')}>Termos de Uso</a>
             </div>
           </div>
-          <p style={{ fontSize: 13, color: '#52525B' }}>Feito para empresários que constroem de verdade.</p>
+          <p style={{ fontSize: 13, color: '#52525B' }}>Feito para quem leva vendas a sério.</p>
         </div>
       </div>
     </footer>
