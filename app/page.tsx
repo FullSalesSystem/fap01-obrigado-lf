@@ -272,13 +272,14 @@ const academyModules = [
 
 function ModulesSection() {
   return (
-    <section className="section-pad" style={{ background: '#FFFFFF' }}>
-      <div className="section-container">
+    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.78)', pointerEvents: 'none' }} />
+      <div className="section-container" style={{ position: 'relative' }}>
         <FadeUp style={{ textAlign: 'center', marginBottom: 40 }}>
-          <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
+          <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#FFFFFF', lineHeight: 1.12 }}>
             Mais de 14 módulos, cursos e ferramentas práticas no mesmo lugar
           </h2>
-          <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.6 }}>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 16, marginTop: 12, maxWidth: 640, margin: '12px auto 0', lineHeight: 1.6 }}>
             Cada conteúdo foi criado para resolver um ponto específico da sua operação comercial. Veja o que você acessa hoje:
           </p>
         </FadeUp>
@@ -288,14 +289,14 @@ function ModulesSection() {
             {academyModules.map((m, i) => (
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: 12,
-                background: '#FFFFFF',
-                border: '1px solid rgba(0,0,0,0.08)',
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
                 borderRadius: 12,
                 padding: '16px 18px',
-                boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+                backdropFilter: 'blur(4px)',
               }}>
                 <span style={{ fontSize: 22, lineHeight: 1 }}>{m.icon}</span>
-                <span style={{ fontSize: 14, fontWeight: 600, color: '#0A0A0A', lineHeight: 1.35 }}>{m.title}</span>
+                <span style={{ fontSize: 14, fontWeight: 600, color: '#FFFFFF', lineHeight: 1.35 }}>{m.title}</span>
               </div>
             ))}
           </div>
