@@ -295,13 +295,13 @@ function ModulesSection() {
                 overflow: 'hidden',
                 backdropFilter: 'blur(4px)',
               }}>
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: 'rgba(0,0,0,0.3)' }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '2/3', background: 'rgba(0,0,0,0.25)' }}>
                   <Image
                     src={m.image}
                     alt={m.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 25vw"
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'contain' }}
                   />
                 </div>
                 <div style={{ padding: '16px 18px 18px', display: 'flex', flexDirection: 'column', gap: 6 }}>
