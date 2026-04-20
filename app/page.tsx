@@ -285,7 +285,7 @@ function ModulesSection() {
         </FadeUp>
 
         <FadeUp delay={80}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: 10 }}>
+          <div className="modules-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))', gap: 10 }}>
             {academyModules.map((m, i) => (
               <div key={i} style={{
                 display: 'flex', flexDirection: 'column',
@@ -313,6 +313,10 @@ function ModulesSection() {
           </div>
         </FadeUp>
       </div>
+      <style>{`
+        @media (max-width: 1024px) { .modules-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
+        @media (max-width: 640px)  { .modules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+      `}</style>
     </section>
   )
 }
