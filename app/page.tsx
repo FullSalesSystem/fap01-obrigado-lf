@@ -285,13 +285,13 @@ function ModulesSection() {
         </FadeUp>
 
         <FadeUp delay={80}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 18 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: 10 }}>
             {academyModules.map((m, i) => (
               <div key={i} style={{
                 display: 'flex', flexDirection: 'column',
                 background: 'rgba(255,255,255,0.04)',
                 border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 14,
+                borderRadius: 8,
                 overflow: 'hidden',
                 backdropFilter: 'blur(4px)',
               }}>
@@ -300,13 +300,13 @@ function ModulesSection() {
                     src={m.image}
                     alt={m.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 25vw"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1280px) 17vw, 13vw"
                     style={{ objectFit: 'contain' }}
                   />
                 </div>
-                <div style={{ padding: '16px 18px 18px', display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: '#FFFFFF', lineHeight: 1.3 }}>{m.title}</div>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.5 }}>{m.desc}</p>
+                <div style={{ padding: '8px 10px 10px', display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: '#FFFFFF', lineHeight: 1.3 }}>{m.title}</div>
+                  <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.65)', lineHeight: 1.45 }}>{m.desc}</p>
                 </div>
               </div>
             ))}
