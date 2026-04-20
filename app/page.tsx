@@ -254,20 +254,20 @@ const areas2 = [
    MÓDULOS DO ACADEMY
 ───────────────────────────────────────────── */
 const academyModules = [
-  { icon: '🎯', title: 'Prospecção ativa' },
-  { icon: '🔍', title: 'Qualificação de leads' },
-  { icon: '📝', title: 'Roteiros e Scripts' },
-  { icon: '💬', title: 'Objeções e Negociação' },
-  { icon: '🤝', title: 'Fechamento de vendas' },
-  { icon: '📞', title: 'Follow-up estruturado' },
-  { icon: '📊', title: 'Gestão de Pipeline' },
-  { icon: '📈', title: 'Métricas e KPIs' },
-  { icon: '🧭', title: 'Liderança Comercial' },
-  { icon: '🧲', title: 'Recrutamento de Vendedores' },
-  { icon: '🚀', title: 'Onboarding e Ramp-up' },
-  { icon: '📚', title: 'Playbooks Operacionais' },
-  { icon: '🔮', title: 'Forecast e Previsibilidade' },
-  { icon: '♟️', title: 'Estratégia Comercial' },
+  { image: '/academy/vendedor-top-1.png', title: 'Vendedor Top 1', desc: 'Mindset, método e execução para se tornar o top performer da sua área.' },
+  { image: '/academy/master-sales-script.png', title: 'Master Sales Script', desc: 'Scripts completos prontos para prospecção, follow-up e fechamento.' },
+  { image: '/academy/persuasao-pro.png', title: 'Persuasão Pro', desc: 'Técnicas avançadas de influência, rapport e negociação para fechar mais.' },
+  { image: '/academy/workshop-prospeccao-7d.png', title: 'Workshop Prospecção 7D', desc: 'Um plano prático para gerar demanda e encher o funil em 7 dias.' },
+  { image: '/academy/intensivo-fechamento-em-reuniao.png', title: 'Intensivo Fechamento em Reunião', desc: 'Como conduzir e fechar reuniões comerciais com consistência.' },
+  { image: '/academy/kit-gestao-comercial.png', title: 'Kit de Gestão Comercial', desc: 'Ferramentas e indicadores para quem lidera ou quer liderar um time de vendas.' },
+  { image: '/academy/analises-de-call---yuri-barbosa.png', title: 'Análises de Call — Yuri Barbosa', desc: 'Reviews reais de ligações comerciais com feedback ao vivo.' },
+  { image: '/academy/raio-x-da-personalidade.png', title: 'Raio X da Personalidade', desc: 'Como adaptar sua abordagem ao perfil de cada cliente e vender mais.' },
+  { image: '/academy/lideranca-financeira.png', title: 'Liderança Financeira', desc: 'Como construir inteligência financeira dentro da operação comercial.' },
+  { image: '/academy/mapa-da-otimizacao.png', title: 'Mapa da Otimização', desc: 'Como identificar os gargalos que estão travando seu crescimento.' },
+  { image: '/academy/desafio-plano-sem-risco-2026---matheus-matuta.png', title: 'Desafio Plano Sem Risco 2026', desc: 'Planejamento comercial prático com metas reais para o ano.' },
+  { image: '/academy/a-riqueza-da-necessidade.png', title: 'A Riqueza da Necessidade', desc: 'Como descobrir a dor real do cliente e usá-la como alavanca de venda.' },
+  { image: '/academy/eleve-se.png', title: 'Eleve-se', desc: 'Desenvolvimento pessoal e profissional para vendedores de alto nível.' },
+  { image: '/academy/analise-de-negocios---vinicius-de-sa.png', title: 'Análises de Negócios — Vinícius de Sá', desc: 'Diagnósticos reais de operações comerciais comentados ao vivo.' },
 ]
 
 function ModulesSection() {
@@ -285,18 +285,29 @@ function ModulesSection() {
         </FadeUp>
 
         <FadeUp delay={80}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 18 }}>
             {academyModules.map((m, i) => (
               <div key={i} style={{
-                display: 'flex', alignItems: 'center', gap: 12,
-                background: 'rgba(255,255,255,0.05)',
+                display: 'flex', flexDirection: 'column',
+                background: 'rgba(255,255,255,0.04)',
                 border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 12,
-                padding: '16px 18px',
+                borderRadius: 14,
+                overflow: 'hidden',
                 backdropFilter: 'blur(4px)',
               }}>
-                <span style={{ fontSize: 22, lineHeight: 1 }}>{m.icon}</span>
-                <span style={{ fontSize: 14, fontWeight: 600, color: '#FFFFFF', lineHeight: 1.35 }}>{m.title}</span>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: 'rgba(0,0,0,0.3)' }}>
+                  <Image
+                    src={m.image}
+                    alt={m.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 25vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+                <div style={{ padding: '16px 18px 18px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#FFFFFF', lineHeight: 1.3 }}>{m.title}</div>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.5 }}>{m.desc}</p>
+                </div>
               </div>
             ))}
           </div>
