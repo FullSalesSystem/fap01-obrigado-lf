@@ -324,11 +324,13 @@ function ModulesSection() {
 /* ─────────────────────────────────────────────
    FULL SALES FLIX
 ───────────────────────────────────────────── */
-const flixFeatures = [
-  { icon: '📘', title: 'Playbooks prontos', desc: 'Modelos operacionais para aplicar direto na sua empresa.' },
-  { icon: '🎬', title: 'Análises de call reais', desc: 'Casos comentados por Yuri Barbosa com diagnósticos precisos.' },
-  { icon: '🗺️', title: 'Guias práticos', desc: 'Passo a passo detalhado para cada etapa do processo comercial.' },
-  { icon: '🎤', title: 'Workshops exclusivos', desc: 'Encontros com especialistas convidados e conteúdo novo toda semana.' },
+const flixItems = [
+  { image: '/flix/playbook-estruturacao-comercial-3-0.png', title: 'Playbook Interno de Estruturação Comercial 3.0', desc: 'O guia definitivo para estruturar processos e times comerciais com alto desempenho.' },
+  { image: '/flix/script-quebra-objecoes.png', title: 'Script Secreto para Quebra de Objeções', desc: 'Como lidar com as principais objeções e virar o jogo na negociação.' },
+  { image: '/flix/guia-social-selling.png', title: 'Guia Prático de Social Selling', desc: 'Como usar redes sociais para gerar oportunidades de venda de forma consistente.' },
+  { image: '/flix/estudo-caso-gabriel-bueno.png', title: 'Estudo de Caso: Gabriel Bueno', desc: 'Como um vendedor chegou a 5M de faturamento — análise real, passo a passo.' },
+  { image: '/flix/talk-alfredo-soares.png', title: 'Talk com Alfredo Soares', desc: 'Conteúdo exclusivo gravado no Full Sales Experience 2026.' },
+  { image: '/flix/workshop-social-selling-thiago-germano.png', title: 'Workshop de Social Selling — Thiago Germano', desc: 'Estratégias práticas de vendas pelas redes sociais.' },
 ]
 
 function FlixSection() {
@@ -351,22 +353,38 @@ function FlixSection() {
         </FadeUp>
 
         <FadeUp delay={80}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
-            {flixFeatures.map((f, i) => (
+          <div className="flix-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: 10 }}>
+            {flixItems.map((f, i) => (
               <div key={i} style={{
+                display: 'flex', flexDirection: 'column',
                 background: 'rgba(255,255,255,0.04)',
                 border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 14,
-                padding: '24px 22px',
+                borderRadius: 8,
+                overflow: 'hidden',
+                backdropFilter: 'blur(4px)',
               }}>
-                <div style={{ fontSize: 28, lineHeight: 1, marginBottom: 14 }}>{f.icon}</div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: '#FFFFFF', marginBottom: 6 }}>{f.title}</div>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.55 }}>{f.desc}</p>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '2/3', background: 'rgba(0,0,0,0.25)' }}>
+                  <Image
+                    src={f.image}
+                    alt={f.title}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+                <div style={{ padding: '8px 10px 10px', display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: '#FFFFFF', lineHeight: 1.3 }}>{f.title}</div>
+                  <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.65)', lineHeight: 1.45 }}>{f.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </FadeUp>
       </div>
+      <style>{`
+        @media (max-width: 1024px) { .flix-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } }
+        @media (max-width: 640px)  { .flix-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+      `}</style>
     </section>
   )
 }
