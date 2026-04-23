@@ -139,7 +139,7 @@ function AcademyHeroSection() {
             color: '#FFFFFF',
             marginBottom: 20,
           }}>
-            o Full Sales Academy reúne tudo que você precisa para{' '}
+            O Full Sales Academy reúne tudo que você precisa para{' '}
             <span style={{ color: '#E01515' }}>dominar vendas e estruturar uma operação comercial</span>
           </h1>
 
@@ -422,23 +422,14 @@ function TrustSection() {
           </div>
           <style>{`
             @keyframes fss-left { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 8px)); } }
-            @keyframes fss-right { 0% { transform: translateX(calc(-50% - 8px)); } 100% { transform: translateX(0); } }
             .fss-row { display:flex; gap:14px; width:max-content; }
-            .fss-row-1 { animation: fss-left 28s linear infinite; }
-            .fss-row-2 { animation: fss-right 28s linear infinite; }
+            .fss-row-1 { animation: fss-left 56s linear infinite; }
             .fss-overflow { overflow:hidden; width:100%; position:relative; padding: 6px 0; }
             .fss-card { display:inline-flex; align-items:center; gap:10px; background:#1a1a1a; color:#fff; padding:12px 20px; border-radius:10px; white-space:nowrap; flex-shrink:0; font-size:14px; font-weight:500; }
           `}</style>
           <div className="fss-overflow">
             <div className="fss-row fss-row-1">
-              {[...areas1, ...areas1].map((a, i) => (
-                <div key={i} className="fss-card"><span>{a.icon}</span><span>{a.text}</span></div>
-              ))}
-            </div>
-          </div>
-          <div className="fss-overflow" style={{ marginTop: 12 }}>
-            <div className="fss-row fss-row-2">
-              {[...areas2, ...areas2].map((a, i) => (
+              {[...areas1, ...areas2, ...areas1, ...areas2].map((a, i) => (
                 <div key={i} className="fss-card"><span>{a.icon}</span><span>{a.text}</span></div>
               ))}
             </div>
@@ -508,40 +499,19 @@ function AboutSection() {
    SESSÃO DE IMPRENSA
 ───────────────────────────────────────────── */
 
-const pressItems = [
-  {
-    outlet: 'Estadão',
-    title: 'Full Sales System: três mentes empreendedoras que transformaram desafios em estratégias',
-    quote: 'Nos últimos anos, ajudamos os nossos clientes a girar mais de 500 milhões de faturamento em vendas. Mas quando olhamos para esses números enxergamos algo ainda maior: não foi só o aumento nas vendas, mas eles se tornaram protagonistas da própria empresa.',
-    image: '/estadao.webp',
-  },
-  {
-    outlet: 'Valor Econômico',
-    title: 'Full Sales System aponta o caminho para crescer em 2026 com estratégias mais inteligentes',
-    quote: 'Empresas que adotam estruturas de vendas inteligentes e estratégias orgânicas robustas tendem a prosperar em cenários de incerteza, criando vantagem competitiva mesmo com menor investimento direto em mídia.',
-    image: '/valor-economico.webp',
-  },
-  {
-    outlet: 'Pequenas Empresas & Grandes Negócios',
-    title: 'Yuri Barbosa, Vinícius de Sá e Matheus Garcia trilharam caminhos distintos, mas marcados pelo mesmo ponto de virada',
-    quote: 'Os sócios desenvolveram uma metodologia própria, capaz de integrar processos comerciais eficientes, automação estratégica e construção de autoridade digital. O objetivo não era apenas aumentar vendas, mas criar um modelo de crescimento consistente.',
-    image: '/pequenas-empresas.webp',
-  },
-]
-
 const pressLogos = [
-  { name: 'Valor Econômico', src: '/press-valor-economico.png', bg: '#FFFFFF', scale: 1.2 },
-  { name: 'Pequenas Empresas & Grandes Negócios', src: '/press-pequenas-empresas.png', bg: '#D35400', scale: 2.3 },
-  { name: 'Band', src: '/press-band.png', bg: '#1A1A1A', scale: 1 },
-  { name: 'Estadão', src: '/estadao-novo.png', bg: '#FFFFFF', scale: 2.0 },
-  { name: 'Terra', src: '/press-terra.png', bg: '#FFFFFF', scale: 1.0 },
+  { name: 'Valor Econômico', src: '/press-valor-economico.png', bg: '#FFFFFF', scale: 1.2, href: 'https://valor.globo.com/patrocinado/pressworks/noticia/2025/11/24/full-sales-system-aponta-o-caminho-para-crescer-em-2026-com-estrategias-mais-inteligentes-1.ghtml' },
+  { name: 'Pequenas Empresas & Grandes Negócios', src: '/press-pequenas-empresas.png', bg: '#D35400', scale: 2.3, href: 'https://revistapegn.globo.com/conteudo-de-marca/pressworks/noticia/2025/11/full-sales-system-tres-mentes-empreendedoras-que-transformaram-desafios-em-estrategias-1.ghtml' },
+  { name: 'Band', src: '/press-band.png', bg: '#1A1A1A', scale: 1, href: 'https://www.band.com.br/band-vale/noticias/full-sales-system-aponta-o-caminho-para-crescer-com-estrategia-inteligente-202511211836' },
+  { name: 'Estadão', src: '/estadao-novo.png', bg: '#FFFFFF', scale: 2.0, href: 'https://bluestudio.estadao.com.br/agencia-de-comunicacao/saftec-digital/full-sales-system-tres-mentes-empreendedoras-que-transformaram-desafios-em-estrategias/' },
+  { name: 'Terra', src: '/press-terra.png', bg: '#FFFFFF', scale: 1.0, href: 'https://www.terra.com.br/economia/vendas-que-colocam-sua-empresa-no-protagonismo-full-sales-mostra-o-caminho,f72fe2c2ee9101ee76a02aea5e3eef8c69xd33kv.html' },
 ]
 
 function PressSection() {
   return (
     <section className="section-pad" style={{ background: '#F5F6F8' }}>
       <div className="section-container">
-        <FadeUp style={{ textAlign: 'center', marginBottom: 48 }}>
+        <FadeUp style={{ textAlign: 'center', marginBottom: 40 }}>
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
             Full Sales System na Mídia
           </h2>
@@ -550,57 +520,43 @@ function PressSection() {
           </p>
         </FadeUp>
 
-        {/* Press logos strip — desktop: flex wrap | mobile: marquee */}
         <FadeUp delay={60}>
-          {/* Desktop */}
-          <div id="press-logos-desktop" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12, marginBottom: 48 }}>
+          <div id="press-logos-desktop" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>
             {pressLogos.map((logo, i) => (
-              <div key={i} style={{ height: 72, width: 180, background: logo.bg, border: '1px solid rgba(0,0,0,0.09)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+              <a
+                key={i}
+                href={logo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Ler matéria em ${logo.name}`}
+                style={{ height: 72, width: 180, background: logo.bg, border: '1px solid rgba(0,0,0,0.09)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.06)', textDecoration: 'none', transition: 'transform 0.2s, box-shadow 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 18px rgba(0,0,0,0.10)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)' }}
+              >
                 <Image src={logo.src} alt={logo.name} width={156} height={48} style={{ objectFit: 'contain', width: '100%', height: '100%', transform: `scale(${logo.scale})`, transformOrigin: 'center center' }} />
-              </div>
+              </a>
             ))}
           </div>
-          {/* Mobile: marquee carousel */}
-          <div id="press-logos-mobile" style={{ overflow: 'hidden', marginBottom: 48, position: 'relative', display: 'none' }}>
+          <div id="press-logos-mobile" style={{ overflow: 'hidden', position: 'relative', display: 'none' }}>
             <div className="marquee-track" style={{ animationDuration: '18s' }}>
               {[...pressLogos, ...pressLogos].map((logo, i) => (
-                <div key={i} style={{ flexShrink: 0, height: 64, width: 150, background: logo.bg, border: '1px solid rgba(0,0,0,0.09)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 10, boxShadow: '0 2px 8px rgba(0,0,0,0.06)', marginRight: 12 }}>
+                <a
+                  key={i}
+                  href={logo.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ler matéria em ${logo.name}`}
+                  style={{ flexShrink: 0, height: 64, width: 150, background: logo.bg, border: '1px solid rgba(0,0,0,0.09)', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 10, boxShadow: '0 2px 8px rgba(0,0,0,0.06)', marginRight: 12, textDecoration: 'none' }}
+                >
                   <Image src={logo.src} alt={logo.name} width={130} height={44} style={{ objectFit: 'contain', width: '100%', height: '100%', transform: `scale(${logo.scale})`, transformOrigin: 'center center' }} />
-                </div>
+                </a>
               ))}
             </div>
           </div>
+          <p style={{ textAlign: 'center', color: '#6B7280', fontSize: 14, marginTop: 20 }}>
+            Clique aqui para ver as matérias na íntegra
+          </p>
         </FadeUp>
-
-        {/* Press quote cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
-          {pressItems.map((item, i) => (
-            <FadeUp key={i} delay={i * 80}>
-              <div className="card" style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                {/* Imagem no topo */}
-                <div style={{ width: '100%', aspectRatio: '16/7', position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
-                  <Image
-                    src={item.image}
-                    alt={item.outlet}
-                    fill
-                    style={{ objectFit: 'cover', objectPosition: 'top' }}
-                  />
-                </div>
-                {/* Conteúdo */}
-                <div style={{ padding: '24px 26px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  <div style={{ fontSize: 28, color: '#E01515', fontWeight: 900, lineHeight: 1, marginBottom: 8, fontFamily: 'Georgia, serif' }}>"</div>
-                  <p style={{ fontSize: 13, fontWeight: 700, color: '#0A0A0A', lineHeight: 1.4, marginBottom: 10 }}>
-                    {item.title}
-                  </p>
-                  <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.65, marginBottom: 16, fontStyle: 'italic', flexGrow: 1 }}>
-                    {item.quote}
-                  </p>
-                  <p style={{ fontSize: 12, fontWeight: 700, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{item.outlet}</p>
-                </div>
-              </div>
-            </FadeUp>
-          ))}
-        </div>
       </div>
       <style>{`
         @media (max-width: 768px) {
@@ -727,16 +683,6 @@ function Footer() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 48 }}>
-            <div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: '#71717A', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 14 }}>Academy</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <a href={CHECKOUT_ANUAL_URL} style={{ fontSize: 14, color: '#A1A1AA', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#fff')} onMouseLeave={e => (e.currentTarget.style.color = '#A1A1AA')}>Garantir Acesso Anual — R$597</a>
-                <a href={CHECKOUT_MENSAL_URL} style={{ fontSize: 14, color: '#A1A1AA', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#fff')} onMouseLeave={e => (e.currentTarget.style.color = '#A1A1AA')}>Parcelar em 12× de R$97</a>
-                <a href={YOUTUBE_PLAYLIST_URL} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, color: '#A1A1AA', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#fff')} onMouseLeave={e => (e.currentTarget.style.color = '#A1A1AA')}>YouTube — Comercial Faixa Preta</a>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Final CTA strip */}
