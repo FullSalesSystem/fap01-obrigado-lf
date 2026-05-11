@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, Suspense, ReactNode } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 
 // ─── CONFIGURAR ESTES VALORES ──────────────────────────────────────────────────
@@ -8,6 +9,26 @@ const CHECKOUT_ANUAL_URL  = 'https://clkdmg.site/subscribe/oto-anual-fssflix'
 const CHECKOUT_MENSAL_URL = 'https://clkdmg.site/subscribe/oto-mensal-fssflix'
 const YOUTUBE_PLAYLIST_URL = 'https://www.youtube.com/playlist?list=PLzJ4B1s6bJZ2DL9jhvEgx2ANhwi6LiQk_'
 // ──────────────────────────────────────────────────────────────────────────────
+
+const FORWARDED_PARAMS = [
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+  'utm_id', 'gclid', 'fbclid', 'gad_source', 'msclkid',
+]
+
+function useWithUtms() {
+  const params = useSearchParams()
+  return (url: string) => {
+    if (!params) return url
+    const forwarded = new URLSearchParams()
+    FORWARDED_PARAMS.forEach(k => {
+      const v = params.get(k)
+      if (v) forwarded.set(k, v)
+    })
+    const qs = forwarded.toString()
+    if (!qs) return url
+    return `${url}${url.includes('?') ? '&' : '?'}${qs}`
+  }
+}
 
 /* ────────────────────────────────────────────
    INTERSECTION OBSERVER HOOK
@@ -55,6 +76,7 @@ function IconCheck() {
 ───────────────────────────────────────────── */
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const withUtms = useWithUtms()
   // hero section height ≈ 100vh; após passar disso o fundo fica claro
   const DARK_HERO_PX = 560
   useEffect(() => {
@@ -74,7 +96,7 @@ function Navbar() {
       <div className="section-container" style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <img src="/assets/logo-fss-branco.png" alt="Full Sales System" loading="lazy" style={{ height: 36, width: 'auto', display: 'block', filter: scrolled ? 'brightness(0)' : 'none' }} />
         <a
-          href={CHECKOUT_ANUAL_URL}
+          href={withUtms(CHECKOUT_ANUAL_URL)}
           className="btn-primary"
           style={{ fontSize: 13, padding: '9px 20px' }}
         >
@@ -112,6 +134,7 @@ function NotificationBar() {
    ACADEMY HERO — dark, com pricing
 ───────────────────────────────────────────── */
 function AcademyHeroSection() {
+  const withUtms = useWithUtms()
   return (
     <section style={{ paddingTop: 64, paddingBottom: 96, position: 'relative', overflow: 'hidden', backgroundImage: 'url(/assets/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <NotificationBar />
@@ -178,7 +201,7 @@ function AcademyHeroSection() {
                 <span style={{ fontSize: 'clamp(42px, 7vw, 54px)', fontWeight: 900, color: '#fff', lineHeight: 1 }}>597</span>
               </div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 24 }}>à vista · equivale a R$49,75/mês</div>
-              <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ width: '100%', fontSize: 14, padding: '13px 16px', display: 'flex', justifyContent: 'center', boxSizing: 'border-box' as const }}>
+              <a href={withUtms(CHECKOUT_ANUAL_URL)} className="btn-primary" style={{ width: '100%', fontSize: 14, padding: '13px 16px', display: 'flex', justifyContent: 'center', boxSizing: 'border-box' as const }}>
                 Garantir Acesso Anual <IconArrow />
               </a>
             </div>
@@ -582,6 +605,7 @@ const offerIncludes = [
 ]
 
 function OfferSection() {
+  const withUtms = useWithUtms()
   return (
     <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', backgroundImage: 'url(/assets/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.78)', pointerEvents: 'none' }} />
@@ -652,7 +676,7 @@ function OfferSection() {
               </div>
             </div>
 
-            <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ width: '100%', fontSize: 15, padding: '16px 20px', display: 'flex', justifyContent: 'center', boxSizing: 'border-box' as const }}>
+            <a href={withUtms(CHECKOUT_ANUAL_URL)} className="btn-primary" style={{ width: '100%', fontSize: 15, padding: '16px 20px', display: 'flex', justifyContent: 'center', boxSizing: 'border-box' as const }}>
               Garantir Acesso Anual — R$597 <IconArrow />
             </a>
 
@@ -670,6 +694,7 @@ function OfferSection() {
    FOOTER (dark)
 ───────────────────────────────────────────── */
 function Footer() {
+  const withUtms = useWithUtms()
   return (
     <footer style={{ background: '#0A0A0A', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '56px 0 40px' }}>
       <div className="section-container">
@@ -696,7 +721,7 @@ function Footer() {
             <p style={{ fontWeight: 700, fontSize: 17, color: '#fff', marginBottom: 6 }}>Tudo isso por menos de R$50 por mês</p>
             <p style={{ fontSize: 13, color: '#A1A1AA', lineHeight: 1.55 }}>14+ módulos. Biblioteca completa. Playbooks, análises de call reais e workshops exclusivos. Acesso imediato assim que você garantir sua vaga.</p>
           </div>
-          <a href={CHECKOUT_ANUAL_URL} className="btn-primary" style={{ fontSize: 14, padding: '14px 24px' }}>
+          <a href={withUtms(CHECKOUT_ANUAL_URL)} className="btn-primary" style={{ fontSize: 14, padding: '14px 24px' }}>
             Garantir Acesso Anual — R$597 <IconArrow />
           </a>
         </div>
