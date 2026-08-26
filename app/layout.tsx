@@ -58,8 +58,13 @@ export default function RootLayout({
 
         {/* ── Eventos personalizados — FAP01-LF ── */}
         <Script id="meta-pixel-events" strategy="afterInteractive">{`
-          fbq('trackCustom','Pageview-lead-desqualificado-geral');
-          fbq('trackCustom','Lead_desqualificado_FAP01');
+          /* eventID = ?sid= (submission_id do form do fap01): o /api/lead manda
+             os mesmos eventos pela Conversions API e a Meta deduplica. */
+          var sid = '';
+          try { sid = new URLSearchParams(location.search).get('sid') || ''; } catch (e) {}
+          function px(nome) { sid ? fbq('trackCustom', nome, {}, { eventID: sid }) : fbq('trackCustom', nome); }
+          px('Pageview-lead-desqualificado-geral');
+          px('Lead_desqualificado_FAP01');
           console.log('✅ Eventos Meta enviados: Pageview-lead-desqualificado-geral e Lead_desqualificado_FAP01');
         `}</Script>
 
