@@ -125,7 +125,7 @@ function NotificationBar() {
       lineHeight: 1.4,
       textTransform: 'uppercase',
     }}>
-      Sua aplicação foi recebida
+      Sua aplicação foi recebida.
     </div>
   )
 }
