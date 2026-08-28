@@ -125,7 +125,7 @@ function NotificationBar() {
       lineHeight: 1.4,
       textTransform: 'uppercase',
     }}>
-      Sua aplicação foi recebida. Nosso time entrará em contato em breve para agendar sua reunião de diagnóstico.
+      Sua aplicação foi recebida
     </div>
   )
 }
