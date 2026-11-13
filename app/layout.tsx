@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Obrigado | Full Sales System',
   description:
-    'Você deu o primeiro passo. Conheça a Full Sales System — a consultoria que já estruturou mais de 550 operações comerciais no Brasil, Portugal e EUA.',
+    'Você deu o primeiro passo. Conheça a Full Sales System, a consultoria que já estruturou mais de 550 operações comerciais no Brasil, Portugal e EUA.',
   keywords: [
     'estrutura comercial',
     'sistema de vendas',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Obrigado | Full Sales System',
     description:
-      'Você deu o primeiro passo. Conheça a Full Sales System — a consultoria que já estruturou mais de 550 operações comerciais.',
+      'Você deu o primeiro passo. Conheça a Full Sales System, a consultoria que já estruturou mais de 550 operações comerciais.',
     type: 'website',
   },
 }
