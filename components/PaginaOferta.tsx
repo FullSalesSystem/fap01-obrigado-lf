@@ -11,6 +11,9 @@
 
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { CheckoutLink, useAbOferta } from './AbOferta'
+
+// Link do Playbook 3.0 (o mesmo do cabeçalho da playbook-obrigado-final).
+const PLAYBOOK_URL = 'https://links.fullsalessystem.com/playbook'
 import { OFERTAS, type Capa, type IconeNome, type Oferta } from '@/lib/ofertas'
 
 /* ───────── prova comum às duas versões (texto da página no ar) ───────── */
@@ -157,8 +160,10 @@ export function PaginaOferta() {
       <section className="po-hero" ref={heroRef}>
         <div className="po-wrap po-hero-in">
           <div className="po-hero-txt">
-            <p className="po-ok"><Icone nome="check" tam={16} cor="#22C55E" /> Sua aplicação foi recebida.</p>
-            <p className="po-olho">Enquanto isso, use esse tempo a seu favor</p>
+            {e?.origem === 'faq03' && <>
+              <p className="po-ok"><Icone nome="check" tam={16} cor="#22C55E" /> <span>O seu Playbook foi enviado para o seu <span style={{ whiteSpace: 'nowrap' }}>e-mail.</span></span></p>
+              <p className="po-olho">Ou você pode acessar <a href={PLAYBOOK_URL} target="_blank" rel="noopener noreferrer">clicando aqui</a>. E, pelo seu perfil, a gente também tem uma oferta especial para você:</p>
+            </>}
             <Titulo o={o} />
             <p className="po-apoio">{o.apoio}</p>
             <div className="po-cartao">
@@ -336,6 +341,8 @@ const CSS = `
 .po-hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
 .po-ok{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#d1fae5;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;margin-bottom:14px}
 .po-olho{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:10px}
+.po-hero .po-olho{font-size:15px;line-height:1.5;color:rgba(255,255,255,.78);margin-bottom:14px;max-width:600px}
+.po-hero .po-olho a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .po-olho--red{color:var(--red);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:12px;text-align:center}
 .po-h1{font-size:clamp(27px,3.4vw,42px);line-height:1.12;font-weight:900;letter-spacing:-.025em;margin:0 0 16px}
 .po-apoio{font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:rgba(255,255,255,.72);max-width:600px;margin:0 0 22px}
