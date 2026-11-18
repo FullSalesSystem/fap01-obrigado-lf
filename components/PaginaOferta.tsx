@@ -12,8 +12,9 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { CheckoutLink, useAbOferta } from './AbOferta'
 
-// Link do Playbook 3.0 (o mesmo do cabeçalho da playbook-obrigado-final).
-const PLAYBOOK_URL = 'https://links.fullsalessystem.com/playbook'
+// PDF do Playbook 3.0 (2026.10.21) servido pela própria página (só existe no faq03):
+// o clique baixa o arquivo na hora e a pessoa não sai da oferta.
+const PLAYBOOK_PDF = '/oferta/playbook-estruturacao-comercial-3.0.pdf'
 import { OFERTAS, type Capa, type IconeNome, type Oferta } from '@/lib/ofertas'
 
 /* ───────── prova comum às duas versões (texto da página no ar) ───────── */
@@ -161,8 +162,9 @@ export function PaginaOferta() {
         <div className="po-wrap po-hero-in">
           <div className="po-hero-txt">
             {e?.origem === 'faq03' && <>
-              <p className="po-ok"><Icone nome="check" tam={16} cor="#22C55E" /> <span>O seu Playbook foi enviado para o seu <span style={{ whiteSpace: 'nowrap' }}>e-mail.</span></span></p>
-              <p className="po-olho">Ou você pode acessar <a href={PLAYBOOK_URL} target="_blank" rel="noopener noreferrer">clicando aqui</a>. E, pelo seu perfil, a gente também tem uma oferta especial para você:</p>
+              <p className="po-ok"><Icone nome="check" tam={16} cor="#22C55E" /> <span>Playbook enviado no seu <span style={{ whiteSpace: 'nowrap' }}>e-mail.</span></span></p>
+              <p className="po-olho po-acesso">Ou você pode acessar <a href={PLAYBOOK_PDF} download="Playbook-de-Estruturacao-Comercial-3.0.pdf">clicando aqui</a>.</p>
+              <p className="po-olho po-perfil">Pelas respostas que você deu, separamos uma oferta que combina com você:</p>
             </>}
             <Titulo o={o} />
             <p className="po-apoio">{o.apoio}</p>
@@ -343,6 +345,8 @@ const CSS = `
 .po-olho{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:10px}
 .po-hero .po-olho{font-size:15px;line-height:1.5;color:rgba(255,255,255,.78);margin-bottom:14px;max-width:600px}
 .po-hero .po-olho a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.po-hero .po-acesso{font-size:12px;color:rgba(255,255,255,.7)}
+.po-hero .po-perfil{font-size:18px;line-height:1.45;color:#fff;font-weight:700}
 .po-olho--red{color:var(--red);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:12px;text-align:center}
 .po-h1{font-size:clamp(27px,3.4vw,42px);line-height:1.12;font-weight:900;letter-spacing:-.025em;margin:0 0 16px}
 .po-apoio{font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:rgba(255,255,255,.72);max-width:600px;margin:0 0 22px}
