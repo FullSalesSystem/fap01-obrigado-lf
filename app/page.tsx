@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef, Suspense, ReactNode } from 'react'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
+import { AnalisePage, MotivoSection, lerMotivo } from './motivo'
 
 // ─── CONFIGURAR ESTES VALORES ──────────────────────────────────────────────────
 const CHECKOUT_ANUAL_URL  = 'https://clkdmg.site/subscribe/oto-anual-fssflix'
@@ -111,10 +113,11 @@ function NotificationBar() {
 /* ─────────────────────────────────────────────
    ACADEMY HERO — dark, com pricing
 ───────────────────────────────────────────── */
-function AcademyHeroSection() {
+function AcademyHeroSection({ comMotivo = false }: { comMotivo?: boolean }) {
   return (
-    <section style={{ paddingTop: 64, paddingBottom: 96, position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      <NotificationBar />
+    <section style={{ paddingTop: comMotivo ? 0 : 64, paddingBottom: 96, position: 'relative', overflow: 'hidden', backgroundImage: 'url(/background-fss.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      {/* com motivo, a faixa "aplicação recebida, vamos agendar" contradiz o texto: sai */}
+      {!comMotivo && <NotificationBar />}
       {/* overlay escuro sobre o background */}
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(6,10,30,0.72)', pointerEvents: 'none' }} />
 
@@ -740,10 +743,18 @@ function Footer() {
    PAGE
 ───────────────────────────────────────────── */
 function HomeContent() {
+  const params = useSearchParams()
+  let motivo = lerMotivo(params.get('motivo'))
+  const token = params.get('t') || ''
+  if (motivo === 'nicho-analise') {
+    if (token) return <AnalisePage token={token} />
+    motivo = 'nicho' // sem token não dá pra mandar o formulário: fica o texto de nicho com a oferta
+  }
   return (
     <main style={{ backgroundColor: '#F5F6F8', color: '#0A0A0A', overflowX: 'hidden' }}>
       <Navbar />
-      <AcademyHeroSection />
+      {motivo && <MotivoSection motivo={motivo} />}
+      <AcademyHeroSection comMotivo={Boolean(motivo)} />
       <ModulesSection />
       <FlixSection />
       <TrustSection />
