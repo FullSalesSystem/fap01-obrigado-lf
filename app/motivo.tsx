@@ -7,6 +7,7 @@
    Textos aprovados pelo Matheus em 24/11/2026 (textos-desqualificado.md), literais. */
 
 import { useState, FormEvent } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 export const ANALISE_URL = 'https://fap01.fullsalessystem.com/api/lead-analise'
 
@@ -25,9 +26,9 @@ const TEXTOS: Record<Motivo, { titulo: string; paragrafos: string[] }> = {
   faturamento: {
     titulo: 'Seu faturamento ainda não está no ponto em que a gente consegue ajudar.',
     paragrafos: [
-      'O tamanho da sua ambição não entra nessa conta. O que entra é o que o nosso método precisa pra funcionar. A gente instala um time comercial com pré-vendas, closer, rotina e meta. Isso tem custo: tráfego, salário, ferramenta. Abaixo de R$ 50 mil por mês, esse custo come a margem antes do resultado aparecer, e o projeto vira um peso em vez de virar alavanca.',
+      'O tamanho da sua ambição não entra nessa conta. O que entra é o que o nosso método precisa pra funcionar. A gente instala um time comercial com pré-vendas, closer, rotina e meta. Isso tem custo: tráfego, salário, ferramenta. Abaixo de R$ 40 mil por mês, esse custo come a margem antes do resultado aparecer, e o projeto vira um peso em vez de virar alavanca.',
       'Nessa fase, quem mais vende na empresa costuma ser o próprio dono. E está certo que seja. O trabalho agora é deixar a oferta redonda e o processo de venda claro na sua cabeça, pra depois passar pra um time.',
-      'Quando a empresa passar dos R$ 50 mil por mês, volta aqui. Esse é o momento em que um comercial estruturado começa a se pagar.',
+      'Quando a empresa passar dos R$ 40 mil por mês, volta aqui. Esse é o momento em que um comercial estruturado começa a se pagar.',
       'Até lá, isso aqui ajuda a chegar mais rápido:',
     ],
   },
@@ -60,6 +61,24 @@ export function lerMotivo(valor: string | null): Motivo | null {
   return valor === 'nicho' || valor === 'faturamento' || valor === 'cargo' || valor === 'nicho-analise' ? valor : null
 }
 
+/* "Preenchi algo errado?": volta pro formulário do fap01 com as respostas que esta página
+   recebeu na URL (o fap01 abre o formulário preenchido com ?corrigir=1). Token, sid e motivo ficam de fora. */
+const FORM_URL = 'https://fap01.fullsalessystem.com/'
+const LEVA = ['nome', 'email', 'whatsapp', 'cargo', 'segmento', 'receita', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
+
+function CorrigirLink({ escuro }: { escuro?: boolean }) {
+  const params = useSearchParams()
+  const q = new URLSearchParams({ corrigir: '1' })
+  for (const k of LEVA) { const v = params.get(k); if (v) q.set(k, v) }
+  return (
+    <p style={{ fontSize: 14, marginTop: 4, marginBottom: 16 }}>
+      <a href={`${FORM_URL}?${q.toString()}`} style={{ color: escuro ? 'rgba(255,255,255,0.55)' : '#6B7280', textDecoration: 'underline' }}>
+        Preenchi algo errado? Corrigir minhas respostas
+      </a>
+    </p>
+  )
+}
+
 function Texto({ motivo, escuro }: { motivo: Motivo; escuro?: boolean }) {
   const t = TEXTOS[motivo]
   return (
@@ -70,6 +89,7 @@ function Texto({ motivo, escuro }: { motivo: Motivo; escuro?: boolean }) {
       {t.paragrafos.map((p, i) => (
         <p key={i} style={{ fontSize: 'clamp(15px, 2vw, 17px)', lineHeight: 1.7, color: escuro ? 'rgba(255,255,255,0.75)' : '#374151', marginBottom: 16 }}>{p}</p>
       ))}
+      <CorrigirLink escuro={escuro} />
     </>
   )
 }
