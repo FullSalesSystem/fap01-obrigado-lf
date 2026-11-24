@@ -130,7 +130,8 @@ function Selos({ selos }: { selos: [string, string, string] }) {
   return <ul className="po-selos">{selos.map((s, i) => <li key={s}><Icone nome={ICONE_SELO[i]} tam={18} cor="rgba(255,255,255,.85)" /><span>{s}</span></li>)}</ul>
 }
 
-export function PaginaOferta() {
+// topo: bloco opcional entre a barra do logo e a 1ª dobra (no fap01, o texto do motivo da desqualificação).
+export function PaginaOferta({ topo }: { topo?: ReactNode } = {}) {
   const e = useAbOferta()
   const o = OFERTAS[e ? e.s.variante : 'A']
   const heroRef = useRef<HTMLElement>(null)
@@ -156,6 +157,7 @@ export function PaginaOferta() {
           <CheckoutLink cta="nav" className="po-btn po-btn--p">{o.ctaCurto}</CheckoutLink>
         </div>
       </header>
+      {topo}
 
       {/* 1ª dobra */}
       <section className="po-hero" ref={heroRef}>
