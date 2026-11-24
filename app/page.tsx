@@ -142,7 +142,7 @@ function AcademyHeroSection({ comMotivo = false }: { comMotivo?: boolean }) {
             color: '#FFFFFF',
             marginBottom: 20,
           }}>
-            o Full Sales Academy reúne tudo que você precisa para{' '}
+            A Full Sales Academy reúne tudo que você precisa para{' '}
             <span style={{ color: '#E01515' }}>dominar vendas e estruturar uma operação comercial</span>
           </h1>
 
@@ -154,7 +154,7 @@ function AcademyHeroSection({ comMotivo = false }: { comMotivo?: boolean }) {
             margin: '0 auto 52px',
           }}>
             Scripts, playbooks, ferramentas de gestão, cursos de liderança e muito mais — o mesmo conteúdo que já estruturou o comercial de mais de{' '}
-            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>600 empresas</span>, agora acessível para você aplicar hoje.
+            <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>700 empresas</span>, agora acessível para você aplicar hoje.
           </p>
 
           {/* Pricing card — somente anual */}
@@ -196,7 +196,7 @@ function AcademyHeroSection({ comMotivo = false }: { comMotivo?: boolean }) {
             <span style={{ color: 'rgba(255,255,255,0.25)' }}>·</span>
             <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="rgba(224,21,21,0.2)"/><path d="M4 7.2L6.1 9.2L10 5" stroke="#E01515" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              <span>+600 empresas estruturadas</span>
+              <span>+700 empresas estruturadas</span>
             </div>
           </div>
         </FadeUp>
@@ -364,7 +364,7 @@ function TrustSection() {
       <div className="section-container">
         <FadeUp style={{ textAlign: 'center', marginBottom: 52 }}>
           <h2 style={{ fontSize: 'clamp(24px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0A0A0A', lineHeight: 1.12 }}>
-            O mesmo método que estruturou mais de 600 operações comerciais agora está disponível para você
+            O mesmo método que estruturou mais de 700 operações comerciais agora está disponível para você
           </h2>
           <p style={{ color: '#6B7280', fontSize: 16, marginTop: 12, maxWidth: 620, margin: '12px auto 0' }}>
             De escritórios de advocacia a empresas de tecnologia, o sistema funciona independente do segmento.
@@ -455,7 +455,7 @@ function AboutSection() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
               {[
-                'Mais de 600 empresas aceleradas no Brasil, Portugal e EUA em segmentos como advocacia, contabilidade, saúde e tech',
+                'Mais de 700 empresas aceleradas no Brasil, Portugal e EUA em segmentos como advocacia, contabilidade, saúde e tech',
                 'Mais de R$1 bilhão em faturamento gerado para empresas aceleradas e mais de R$110 milhões em vendas próprias',
                 'NPS de 87 e nota de avaliação 9,44 com foco em resultado real, não só em conteúdo',
                 'Metodologia própria de 6 pilares que ativa todos os canais de receita da operação comercial',
@@ -585,7 +585,7 @@ function PressSection() {
    OFERTA
 ───────────────────────────────────────────── */
 const offerIncludes = [
-  'Mais de 14 módulos e cursos completos do Full Sales Academy',
+  'Mais de 14 módulos e cursos completos da Full Sales Academy',
   'Acesso completo ao Full Sales Flix e sua biblioteca de playbooks e guias',
   'Workshops exclusivos com especialistas convidados',
   'Análises de call reais comentadas por Yuri Barbosa',
