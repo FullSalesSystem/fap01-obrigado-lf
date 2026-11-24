@@ -127,6 +127,7 @@ export function AnalisePage({ token }: { token: string }) {
           para_quem: f.getAll('para_quem'),
           canais: f.getAll('canais'),
           time_comercial: String(f.get('time_comercial') || ''),
+          visitor_id: (window as unknown as { __fssVid?: string }).__fssVid || '',
         }),
       })
       setEstado(r.ok ? 'ok' : 'erro')
