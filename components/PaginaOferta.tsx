@@ -16,6 +16,7 @@ import { CheckoutLink, useAbOferta } from './AbOferta'
 // o clique baixa o arquivo na hora e a pessoa não sai da oferta.
 const PLAYBOOK_PDF = '/oferta/playbook-estruturacao-comercial-3.0.pdf'
 import { OFERTAS, type Capa, type IconeNome, type Oferta } from '@/lib/ofertas'
+import { CAMPEA } from '@/lib/abOferta'
 
 /* ───────── prova comum às duas versões (texto da página no ar) ───────── */
 const NUMEROS = [
@@ -68,11 +69,11 @@ function Titulo({ o }: { o: Oferta }) {
   return <h1 className="po-h1">{antes}<span className="po-red">{produto}</span>{meio}<span className="po-red">{argumento}</span>{depois}</h1>
 }
 
-function Preco({ de, por, nota, grande }: { de: string; por: string; nota: string; grande?: boolean }) {
+function Preco({ de, por, nota, grande, sufixo }: { de: string; por: string; nota: string; grande?: boolean; sufixo?: string }) {
   return (
     <div className={grande ? 'po-preco po-preco--g' : 'po-preco'}>
-      <div className="po-preco-de">De <s>{de}</s> por</div>
-      <div className="po-preco-por"><span>R$</span>{por}</div>
+      {de && <div className="po-preco-de">De <s>{de}</s> por</div>}
+      <div className="po-preco-por"><span>R$</span>{por}{sufixo && <small className="po-preco-suf">{sufixo}</small>}</div>
       <div className="po-preco-nota">{nota}</div>
     </div>
   )
@@ -133,7 +134,7 @@ function Selos({ selos }: { selos: [string, string, string] }) {
 // topo: bloco opcional entre a barra do logo e a 1ª dobra (no fap01, o texto do motivo da desqualificação).
 export function PaginaOferta({ topo }: { topo?: ReactNode } = {}) {
   const e = useAbOferta()
-  const o = OFERTAS[e ? e.s.variante : 'A']
+  const o = OFERTAS[e ? e.s.variante : CAMPEA]
   const heroRef = useRef<HTMLElement>(null)
   const [fixoVisivel, setFixoVisivel] = useState(false)
   const resta = useContagem()
@@ -172,7 +173,7 @@ export function PaginaOferta({ topo }: { topo?: ReactNode } = {}) {
             <p className="po-apoio">{o.apoio}</p>
             <div className="po-cartao">
               <span className="po-cartao-rot">{o.precoCartao.rotulo}</span>
-              <Preco de={o.precoCartao.de} por={o.precoCartao.por} nota={o.precoCartao.nota} />
+              <Preco de={o.precoCartao.de} por={o.precoCartao.por} nota={o.precoCartao.nota} sufixo={o.precoCartao.sufixo} />
               <CheckoutLink cta="hero" className="po-btn po-btn--g">{o.cta} <Icone nome="seta" tam={18} /></CheckoutLink>
               <div className="po-cartao-pe">
                 <Cronometro resta={resta} />
@@ -268,7 +269,7 @@ export function PaginaOferta({ topo }: { topo?: ReactNode } = {}) {
             <ul className="po-pilha">
               {o.oferta.pilha.map(p => <li key={p.item}><Icone nome="check" tam={18} cor="#FE063B" /><span>{p.item}</span>{p.valor && <em>{p.valor}</em>}</li>)}
             </ul>
-            <Preco de={o.oferta.de} por={o.oferta.por} nota={o.oferta.nota} grande />
+            <Preco de={o.oferta.de} por={o.oferta.por} nota={o.oferta.nota} sufixo={o.oferta.sufixo} grande />
             <Cronometro resta={resta} />
             <CheckoutLink cta="oferta" className="po-btn po-btn--g">{o.oferta.cta} <Icone nome="seta" tam={18} /></CheckoutLink>
             <p className="po-garantia"><Icone nome="cadeado" tam={14} /> {o.oferta.garantia}</p>
@@ -363,6 +364,8 @@ const CSS = `
 .po-preco--g{text-align:center;margin:22px 0 14px}
 .po-oferta .po-crono{margin-bottom:16px}
 .po-preco--g .po-preco-por{font-size:clamp(56px,9vw,76px)}
+.po-preco-suf{font-size:24px;font-weight:800;color:#fff;letter-spacing:0;margin-left:4px}
+.po-preco--g .po-preco-suf{font-size:30px}
 .po-selos{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:0}
 .po-selos li{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:12px;font-weight:600;line-height:1.3;color:rgba(255,255,255,.78);padding:0 6px}
 .po-selos li+li{border-left:1px solid var(--wline)}

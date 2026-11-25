@@ -29,7 +29,7 @@ export async function POST(req: Request) {
   const v = txt(b.v, 1)
   const o = txt(b.o, 5)
   const cta = txt(b.cta, 10)
-  if (!['exposed', 'click'].includes(evento) || !UUID_RE.test(id) || !['A', 'B'].includes(v) || !['fap01', 'faq03'].includes(o)) {
+  if (!['exposed', 'click'].includes(evento) || !UUID_RE.test(id) || !['A', 'B', 'C'].includes(v) || !['fap01', 'faq03'].includes(o)) {
     return new Response(null, { status: 400 })
   }
   if (cta && !['nav', 'hero', 'oferta', 'rodape', 'fixo'].includes(cta)) return new Response(null, { status: 400 })

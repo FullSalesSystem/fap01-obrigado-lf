@@ -1,4 +1,4 @@
-// Conteúdo das duas versões do teste A/B do desqualificado. Arquivo IGUAL nos dois
+// Conteúdo das versões do teste A/B do desqualificado (A saiu em 24/11; no ar: B e C). Arquivo IGUAL nos dois
 // repositórios. O desenho da página (components/PaginaOferta.tsx) é um só: A e B
 // mudam APENAS o que está aqui, para o teste medir a oferta e não o layout.
 //
@@ -20,7 +20,7 @@ export interface Oferta {
   titulo: [string, string, string, string, string]
   apoio: string
   visual: { capas: Capa[]; selo: string }
-  precoCartao: { rotulo: string; de: string; por: string; nota: string }
+  precoCartao: { rotulo: string; de: string; por: string; nota: string; sufixo?: string } // sufixo: '/mês' ao lado do número
   cta: string
   ctaCurto: string
   selos: [string, string, string]
@@ -33,7 +33,7 @@ export interface Oferta {
   dentro:
     | { tipo: 'capas'; olho: string; titulo: string; sub: string; capas: { src: string; nome: string }[] }
     | { tipo: 'passos'; olho: string; titulo: string; sub: string; passos: { icone: IconeNome; nome: string }[] }
-  oferta: { titulo: string; sub: string; pilha: { item: string; valor?: string }[]; de: string; por: string; nota: string; cta: string; garantia: string }
+  oferta: { titulo: string; sub: string; pilha: { item: string; valor?: string }[]; de: string; por: string; nota: string; sufixo?: string; cta: string; garantia: string }
   sobre: string
   fixo: string
   faixa: { titulo: string; texto: string }
@@ -169,4 +169,51 @@ const B: Oferta = {
   faixa: { titulo: 'Tudo isso por R$ 97 à vista', texto: 'O script, a aula e 4 bônus. Acesso imediato no e-mail, com garantia de 60 dias.' },
 }
 
-export const OFERTAS: Record<Variante, Oferta> = { A, B }
+// C ("C de coração", 24/11/2026): Full Sales Academy por assinatura, R$ 59/mês sempre
+// (checkout Ticto O6F487EB3, o mesmo da /academy-black-friday/), cancela quando quiser.
+// Produto e entregas da página da Black, SEM nenhum argumento de Black Friday nem o presente.
+const C: Oferta = {
+  produto: 'Full Sales Academy',
+  titulo: ['O ', 'Full Sales Academy', ' reúne em uma assinatura ', 'tudo para vender com processo, não no improviso', ''],
+  apoio: 'Cursos, scripts e playbooks com o mesmo método que já estruturou o comercial de mais de 700 empresas. Conteúdo novo toda semana, por menos de R$ 2 por dia.',
+  visual: { capas: ['/oferta/academy/vendedor-top-1.webp', '/oferta/academy/kit-gestao-comercial.webp', '/oferta/academy/persuasao-pro.webp'], selo: '+14 módulos' },
+  precoCartao: { rotulo: 'Assinatura mensal', de: '', por: '59', sufixo: '/mês', nota: 'menos de R$ 2 por dia' },
+  cta: 'Quero assinar a Academy',
+  ctaCurto: 'Assinar',
+  selos: ['Acesso imediato', 'Cancele quando quiser', 'Pagamento seguro'],
+  recebe: {
+    titulo: 'Tudo o que vem na assinatura',
+    sub: 'Cada conteúdo resolve um ponto da área comercial: prospecção, reunião, gestão e liderança.',
+    destaque: { tag: 'A assinatura', nome: 'Full Sales Academy', desc: 'Mais de 14 módulos, cursos e ferramentas de vendas, prospecção, gestão comercial e liderança, no mesmo lugar.' },
+    itens: [
+      { icone: 'biblioteca', tag: 'Incluso', nome: 'Full Sales Flix', desc: 'Biblioteca com playbooks, estudos de caso, guias práticos e workshops com especialistas.' },
+      { icone: 'call', tag: 'Incluso', nome: 'Análises de call com Yuri Barbosa', desc: 'Ligações comerciais reais analisadas, com feedback ao vivo.' },
+      { icone: 'diagnostico', tag: 'Incluso', nome: 'Análises de negócios com Vinícius de Sá', desc: 'Diagnósticos reais de operações comerciais comentados ao vivo.' },
+      { icone: 'workshop', tag: 'Toda semana', nome: 'Aulas e webinários novos', desc: 'Todas as atualizações já fazem parte da assinatura, sem pagar nada a mais.' },
+    ],
+  },
+  dentro: A.dentro,
+  oferta: {
+    titulo: 'Full Sales Academy',
+    sub: 'Tudo para estruturar e evoluir o processo comercial, em um único lugar, numa assinatura mensal.',
+    pilha: [
+      { item: 'Mais de 14 módulos e cursos completos do Full Sales Academy' },
+      { item: 'Full Sales Flix, com playbooks, estudos de caso e guias' },
+      { item: 'Workshops exclusivos com especialistas convidados' },
+      { item: 'Análises de call reais comentadas por Yuri Barbosa' },
+      { item: 'Diagnósticos de negócios ao vivo com Vinícius de Sá' },
+      { item: 'Aulas e webinários novos toda semana, já incluídos' },
+    ],
+    de: '',
+    por: '59',
+    sufixo: '/mês',
+    nota: 'menos de R$ 2 por dia',
+    cta: 'Assinar por R$ 59 por mês',
+    garantia: 'Pagamento seguro. Acesso imediato. Cancele quando quiser.',
+  },
+  sobre: 'O Full Sales Academy reúne esse mesmo conhecimento em conteúdos práticos, numa assinatura mensal.',
+  fixo: 'R$ 59 por mês',
+  faixa: { titulo: 'Tudo isso por R$ 59 por mês', texto: 'Mais de 14 módulos, o Full Sales Flix, análises de call reais e conteúdo novo toda semana. Cancele quando quiser.' },
+}
+
+export const OFERTAS: Record<Variante, Oferta> = { A, B, C }

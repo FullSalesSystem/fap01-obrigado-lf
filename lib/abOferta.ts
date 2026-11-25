@@ -1,26 +1,34 @@
-// Teste A/B da oferta do desqualificado: Full Sales Academy (A) x Master Sales Script (B).
+// Teste A/B da oferta do desqualificado. Letras: cada versão nova ganha a próxima letra.
+// A = Full Sales Academy anual R$ 597 (13/11 a 24/11, perdeu e saiu), B = Master Sales Script
+// R$ 97 (campeã), C = Full Sales Academy por assinatura R$ 59/mês (desde 24/11). Próxima: D.
 // Arquivo IGUAL nos dois repositórios (fap01-obrigado-lf e faq03-obrigado-lf).
 //
 // Regras (molde do FAQ-05 e da fap01_ab_visitors):
-// - sorteio 50/50 no navegador, guardado em localStorage: quem volta vê a mesma versão;
-// - ?ab=A ou ?ab=B mostra a versão sem gravar nada (link de conferência);
-// - robô (UA de crawler/headless/webdriver) vê a A e não grava;
+// - sorteio no navegador, guardado em localStorage: quem volta vê a mesma versão.
+//   Melhoria contínua de LP: 80% na campeã (B) e 20% na desafiante (C). Quem tinha a A
+//   guardada ganha visitante novo e entra no sorteio de novo (a linha antiga fica com a A);
+// - ?ab=A, ?ab=B ou ?ab=C mostra a versão sem gravar nada (link de conferência);
+// - robô (UA de crawler/headless/webdriver) vê a campeã e não grava;
 // - só entra no teste quem chegou do formulário: a URL precisa ter ?sid= (os dois
 //   formulários mandam). Sem sid (honeypot, envio rápido demais, link compartilhado,
-//   acesso direto) a pessoa vê a A e não grava.
+//   acesso direto) a pessoa vê a campeã e não grava.
 // - a gravação é do servidor (/api/ab-event, com service_role); o navegador não fala
 //   com o Supabase.
 
 export const AB_EXPERIMENT = 'desq-academy-x-mss-202611'
 export const AB_STORAGE_KEY = 'fss_desq_ab_oferta'
 
-export type Variante = 'A' | 'B'
+export type Variante = 'A' | 'B' | 'C'
+export const CAMPEA: Variante = 'B'
+export const DESAFIANTE: Variante = 'C'
+export const PARTE_DESAFIANTE = 0.2 // 20% para a C
 export type Origem = 'fap01' | 'faq03'
 export type Cta = 'nav' | 'hero' | 'oferta' | 'rodape' | 'fixo'
 
 export const CHECKOUT: Record<Variante, string> = {
   A: 'https://clkdmg.site/subscribe/oto-anual-fssflix', // Full Sales Academy, anual R$ 597 (Guru)
   B: 'https://buy.fullsalessystem.com/O5E40F8F8',      // Master Sales Script, R$ 97 (Ticto)
+  C: 'https://payment.ticto.app/O6F487EB3',           // Full Sales Academy, assinatura R$ 59/mês (Ticto)
 }
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
@@ -35,9 +43,9 @@ function novoUuid(): string {
 }
 
 function sortear(): Variante {
-  const r = new Uint8Array(1)
-  try { crypto.getRandomValues(r) } catch { r[0] = Math.floor(Math.random() * 256) }
-  return r[0] < 128 ? 'A' : 'B'
+  const r = new Uint32Array(1)
+  try { crypto.getRandomValues(r) } catch { r[0] = Math.floor(Math.random() * 2 ** 32) }
+  return r[0] / 2 ** 32 < PARTE_DESAFIANTE ? DESAFIANTE : CAMPEA
 }
 
 export function ehRobo(): boolean {
@@ -55,15 +63,17 @@ export interface Sorteio {
 // Decide a versão. Chamar só no navegador.
 export function decidir(params: URLSearchParams): Sorteio {
   const forcada = params.get('ab')
-  if (forcada === 'A' || forcada === 'B') return { variante: forcada, visitorId: null, conferencia: true }
-  if (ehRobo() || !params.get('sid')) return { variante: 'A', visitorId: null, conferencia: false }
+  if (forcada === 'A' || forcada === 'B' || forcada === 'C') return { variante: forcada, visitorId: null, conferencia: true }
+  if (ehRobo() || !params.get('sid')) return { variante: CAMPEA, visitorId: null, conferencia: false }
 
   let salvo: { id?: string; v?: string } = {}
   try { salvo = JSON.parse(localStorage.getItem(AB_STORAGE_KEY) || '{}') || {} } catch { /* aba anônima */ }
   // Só no computador local (conferência): ?ab_novo=1 simula uma pessoa nova. No ar é ignorado.
   if (params.get('ab_novo') === '1' && /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) salvo = {}
+  // A saiu do teste: quem tinha a A guardada vira visitante novo (a linha antiga continua A no banco).
+  if (salvo.v === 'A') salvo = {}
   const id = typeof salvo.id === 'string' && UUID_RE.test(salvo.id) ? salvo.id : novoUuid()
-  const v: Variante = salvo.v === 'A' || salvo.v === 'B' ? salvo.v : sortear()
+  const v: Variante = salvo.v === 'B' || salvo.v === 'C' ? salvo.v : sortear()
   try { localStorage.setItem(AB_STORAGE_KEY, JSON.stringify({ id, v, x: AB_EXPERIMENT })) } catch { /* segue sem guardar */ }
   return { variante: v, visitorId: id, conferencia: false }
 }
@@ -93,8 +103,8 @@ export function enviarEvento(evento: 'exposed' | 'click', s: Sorteio, origem: Or
 
 // Link do checkout com as UTMs do teste.
 // utm_source=obrigado-lf · utm_medium=<origem> · utm_campaign=ab-oferta-desq-202611
-// utm_content=<A|B> · utm_term=<utm_campaign do anúncio que trouxe o lead>
-// src=desq-<origem>-<a|b> (a Ticto grava em tracking.src) · sck=<visitor_id> (tracking.sck)
+// utm_content=<A|B|C> · utm_term=<utm_campaign do anúncio que trouxe o lead>
+// src=desq-<origem>-<a|b|c> (a Ticto grava em tracking.src) · sck=<visitor_id> (tracking.sck)
 // A campanha de anúncio de origem continua no lead (tabela de leads) e na linha do teste.
 export function linkCheckout(s: Sorteio, origem: Origem, params: URLSearchParams): string {
   const u = new URL(CHECKOUT[s.variante])
